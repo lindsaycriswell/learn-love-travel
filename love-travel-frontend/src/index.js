@@ -4,4 +4,17 @@ import './index.css';
 import App from './App';
 import 'semantic-ui-css/semantic.min.css';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+
+
+
+import { BrowserRouter } from 'react-router-dom'
+  ReactDOM.render((
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  ), document.getElementById('root'))
+
+
+// <Route path="/" component={Home} />
+// <Route exact path="/mainPage" component={MapContainer}/>
+// </div>
