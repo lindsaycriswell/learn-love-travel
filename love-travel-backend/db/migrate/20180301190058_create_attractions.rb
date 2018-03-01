@@ -15,7 +15,6 @@ class CreateAttractions < ActiveRecord::Migration[5.1]
       t.string :zip_code
       t.string :country
       t.string :display_address
-      t.string :display_phone
 
       t.timestamps
     end
