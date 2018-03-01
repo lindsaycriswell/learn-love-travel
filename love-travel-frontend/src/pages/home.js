@@ -7,8 +7,7 @@ class Home extends React.Component {
   render() {
     return (
       <div>
-        <h1>Home!</h1>
-        <Link to={`/mainPage`} > a link </Link>
+        This will be a splash page
       </div>
     )
   }

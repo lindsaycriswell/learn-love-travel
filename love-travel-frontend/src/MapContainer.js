@@ -1,3 +1,6 @@
+
+// THIS IS ALL THE GOOGLE MAPS STUFF RN
+
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import React from "react";
 

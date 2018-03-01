@@ -1,20 +1,28 @@
-import React, { Component } from "react";
-import "./App.css";
 
-import NavBar from "./navBar";
-
-import Home from './home'
-import MapContainer from './MapContainer'
-
+// import react dependencies
+import React from "react";
 import { Switch, Route } from 'react-router-dom'
 
-class App extends Component {
+// import styling
+import "./App.css";
+
+// import components
+import NavBar from "./navBar";
+import MapContainer from './MapContainer'
+import About from './pages/about'
+import Home from './pages/home'
+
+
+
+class App extends React.Component {
   render() {
     return (
       <div className="App">
+        <NavBar />
         <Switch>
             <Route exact path='/' component={Home}/>
-            <Route exact path='/mainPage' component={MapContainer}/>
+            <Route exact path='/map' component={MapContainer}/>
+            <Route exact path='/about' component={About}/>
         </Switch>
       </div>
     );
