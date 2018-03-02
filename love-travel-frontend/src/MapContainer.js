@@ -7,7 +7,7 @@ import React from "react";
 // other components
 import Places from "./places";
 
-import AttractionList from './attractionList'
+import AttractionList from "./attractionList";
 
 export class MapContainer extends React.Component {
   constructor(props) {
@@ -40,7 +40,7 @@ export class MapContainer extends React.Component {
       selectedPlace: location,
       nextData: location,
       activeMarker: marker,
-      showingInfoWindow: true,
+      showingInfoWindow: true
     });
   };
 
@@ -53,9 +53,8 @@ export class MapContainer extends React.Component {
     }
   };
 
-
   render() {
-    console.log(this.state.selectedPlace)
+    console.log(this.state.selectedPlace);
     return (
       <div>
         <div style={{ padding: "10px" }}>
@@ -66,7 +65,6 @@ export class MapContainer extends React.Component {
             className={"map"}
             zoom={2}
           >
-
             {this.state.locations.map(location => (
               <Marker
                 key={location.id}
@@ -94,7 +92,12 @@ export class MapContainer extends React.Component {
         </div>
 
         <div className="ui right floated segment">
-          {this.state.selectedPlace ? <AttractionList cityName={this.state.selectedPlace.name} data={this.state.nextData}/> : null}
+          {this.state.selectedPlace ? (
+            <AttractionList
+              cityName={this.state.selectedPlace.name}
+              data={this.state.nextData}
+            />
+          ) : null}
         </div>
       </div>
     );
@@ -104,5 +107,3 @@ export class MapContainer extends React.Component {
 export default GoogleApiWrapper({
   apiKey: "AIzaSyDTnFckTcPidqCa5F9dWom4H_0hbJu9Nh0"
 })(MapContainer);
-
-// <Places data={this.state.selectedPlace} />
