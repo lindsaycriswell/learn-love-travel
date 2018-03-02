@@ -57,6 +57,7 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     erubi (1.7.0)
     ffi (1.9.23)
+    geocoder (1.4.6)
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     http (3.0.0)
@@ -155,8 +156,12 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers (~> 0.10.2)
   byebug
+<<<<<<< HEAD
   http
   json
+=======
+  geocoder
+>>>>>>> 77607b7d7846323af985c18c8d5d83781acb2b90
   listen (>= 3.0.5, < 3.2)
   pg (~> 0.18)
   pry

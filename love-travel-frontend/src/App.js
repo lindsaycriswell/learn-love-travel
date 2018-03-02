@@ -1,21 +1,56 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
 
-class App extends Component {
+// import react dependencies
+import React from "react";
+import { Switch, Route } from 'react-router-dom'
+
+// import styling
+import "./App.css";
+
+// import components
+import NavBar from "./navBar";
+import MapContainer from './MapContainer'
+import About from './pages/about'
+import Home from './pages/home'
+
+import Image from "./images/sunrise-myanmar.jpg"
+
+// let sectionStyle = {
+//   margin: 0,
+//   width: "100%",
+//   height: "800px",
+//   backgroundImage: `url(${Image})`
+// };
+//
+//  style={sectionStyle}
+
+class App extends React.Component {
+
   render() {
+
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <NavBar />
+        <Switch>
+            <Route exact path='/' component={Home}/>
+            <Route exact path='/map' component={MapContainer}/>
+            <Route exact path='/about' component={About}/>
+        </Switch>
       </div>
     );
   }
 }
+
+//   render() {
+//     return (
+//       <div className="App">
+//         <div className="ui container">
+//             <NavBar/>
+//             <div className="ui divider"></div>
+//             <MapContainer />
+//         </div>
+//       </div>
+//     );
+//   }
+// }
 
 export default App;
