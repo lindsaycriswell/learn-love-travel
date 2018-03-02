@@ -14,14 +14,6 @@ import Home from './pages/home'
 
 import Image from "./images/sunrise-myanmar.jpg"
 
-// let sectionStyle = {
-//   margin: 0,
-//   width: "100%",
-//   height: "800px",
-//   backgroundImage: `url(${Image})`
-// };
-//
-//  style={sectionStyle}
 
 class App extends React.Component {
 
@@ -40,17 +32,5 @@ class App extends React.Component {
   }
 }
 
-//   render() {
-//     return (
-//       <div className="App">
-//         <div className="ui container">
-//             <NavBar/>
-//             <div className="ui divider"></div>
-//             <MapContainer />
-//         </div>
-//       </div>
-//     );
-//   }
-// }
 
 export default App;
