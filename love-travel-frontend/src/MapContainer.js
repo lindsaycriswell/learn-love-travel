@@ -16,14 +16,8 @@ export class MapContainer extends React.Component {
       showingInfoWindow: false,
       activeMarker: {},
       selectedPlace: "",
-<<<<<<< HEAD
       nextData: "",
-=======
-<<<<<<< HEAD
-=======
->>>>>>> google-setup
       locations: []
->>>>>>> master
     };
 
     // binding this to event-handler functions
@@ -72,19 +66,7 @@ export class MapContainer extends React.Component {
             className={"map"}
             zoom={2}
           >
-<<<<<<< HEAD
-            <Marker
-              onClick={this.onMarkerClick}
-              title={"The marker`s title will appear as a tooltip."}
-              name={"San Franciscio"}
-              position={{ lat: 37.778519, lng: -122.40564 }}
-            />
 
-            <InfoWindow
-              marker={this.state.activeMarker}
-              visible={this.state.showingInfoWindow}
-              onClose={this.onInfoWindowClose}>
-=======
             {this.state.locations.map(location => (
               <Marker
                 key={location.id}
@@ -104,29 +86,16 @@ export class MapContainer extends React.Component {
               visible={this.state.showingInfoWindow}
               onClick={this.testClick}
             >
->>>>>>> master
               <div>
                 <h1>{this.state.selectedPlace.name}</h1>
               </div>
             </InfoWindow>
           </Map>
         </div>
-<<<<<<< HEAD
+
         <div className="ui right floated segment">
           {this.state.selectedPlace ? <AttractionList cityName={this.state.selectedPlace.name} data={this.state.nextData}/> : null}
-=======
-<<<<<<< HEAD
-
-        <div style={{ float: "right" }}>
-          {this.state.selectedPlace ? <Places data={this.state.selectedPlace} />  : null}
         </div>
-
-=======
-        <div style={{ float: "right" }}>
-          {this.state.selectedPlace ? "TEST" : null}
->>>>>>> google-setup
-        </div>
->>>>>>> master
       </div>
     );
   }
