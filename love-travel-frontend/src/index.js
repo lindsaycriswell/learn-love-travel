@@ -13,8 +13,3 @@ import { BrowserRouter } from 'react-router-dom'
       <App />
     </BrowserRouter>
   ), document.getElementById('root'))
-
-
-// <Route path="/" component={Home} />
-// <Route exact path="/mainPage" component={MapContainer}/>
-// </div>
