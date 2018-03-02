@@ -16,7 +16,7 @@ LOCATION_COORDINATES = [
   {"San Francisco, CA": [37.774929, -122.419416]},
   {"London, UK": [51.507351, -0.127758]},
   {"Paris, France": [48.856614, 2.352222]},
-  {"Buenos Aires, Argentina": [-34.603684, 58.381559]},
+  {"Buenos Aires, Argentina": [-34.603684, -58.381559]},
   {"Tokyo, Japan": [35.689487, 139.691706]},
   {"Hong Kong, HK": [22.396428, 114.109497]},
   {"Rome, Italy": [41.902783, 12.496366]},
@@ -60,7 +60,6 @@ def create_attractions
   yelp_hash = search
   yelp_hash.each do |loc, att|
     att_location = Location.find_by(name: loc.to_s)
-    puts att_location.id
 
     att["businesses"].each do |a, details|
 

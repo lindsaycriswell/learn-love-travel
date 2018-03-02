@@ -1,4 +1,3 @@
-
 // THIS IS ALL THE GOOGLE MAPS STUFF RN
 
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
@@ -10,7 +9,8 @@ export class MapContainer extends React.Component {
     this.state = {
       showingInfoWindow: false,
       activeMarker: {},
-      selectedPlace: {}
+      selectedPlace: "",
+      locations: []
     };
 
     // binding this to event-handler functions
@@ -18,9 +18,19 @@ export class MapContainer extends React.Component {
     this.onMapClicked = this.onMapClicked.bind(this);
   }
 
-  onMarkerClick = (props, marker, e) => {
+  componentDidMount() {
+    fetch("http://localhost:3000/api/v1/locations")
+      .then(res => res.json())
+      .then(json =>
+        this.setState({
+          locations: json
+        })
+      );
+  }
+
+  onMarkerClick = (googleProps, marker, e, location) => {
     this.setState({
-      selectedPlace: props,
+      selectedPlace: location,
       activeMarker: marker,
       showingInfoWindow: true
     });
@@ -38,25 +48,43 @@ export class MapContainer extends React.Component {
   render() {
     return (
       <div>
-        <Map google={this.props.google} onClick={this.onMapClicked} style={{width: '70%', height: '80%', position: 'relative'}} className={'map'} zoom={2}>
-          <Marker onClick={this.onMarkerClick} name={"Current location"} />
-
-          <Marker
-          onClick={this.onMarkerClick}
-          title={'The marker`s title will appear as a tooltip.'}
-          name={'SOMA'}
-          position={{lat: 37.778519, lng: -122.405640}} />
-
-          <InfoWindow
-            marker={this.state.activeMarker}
-            visible={this.state.showingInfoWindow}
+        <div style={{ padding: "10px" }}>
+          <Map
+            google={this.props.google}
+            onClick={this.onMapClicked}
+            style={{ width: "70%", height: "80%", position: "relative" }}
+            className={"map"}
+            zoom={2}
           >
-            <div>
-              <h1>{this.state.selectedPlace.name}</h1>
-            </div>
-          </InfoWindow>
-        </Map>
+            {this.state.locations.map(location => (
+              <Marker
+                key={location.id}
+                onClick={(googleProps, marker, e) =>
+                  this.onMarkerClick(googleProps, marker, e, location)
+                }
+                title={"The marker`s title will appear as a tooltip."}
+                name={location.name}
+                position={{
+                  lat: location.latitude_coordinate,
+                  lng: location.longitude_coordinate
+                }}
+              />
+            ))}
+            <InfoWindow
+              marker={this.state.activeMarker}
+              visible={this.state.showingInfoWindow}
+              onClick={this.testClick}
+            >
+              <div>
+                <h1>{this.state.selectedPlace.name}</h1>
+              </div>
+            </InfoWindow>
+          </Map>
         </div>
+        <div style={{ float: "right" }}>
+          {this.state.selectedPlace ? "TEST" : null}
+        </div>
+      </div>
     );
   }
 }
@@ -64,3 +92,5 @@ export class MapContainer extends React.Component {
 export default GoogleApiWrapper({
   apiKey: "AIzaSyDTnFckTcPidqCa5F9dWom4H_0hbJu9Nh0"
 })(MapContainer);
+
+// <Places data={this.state.selectedPlace} />
