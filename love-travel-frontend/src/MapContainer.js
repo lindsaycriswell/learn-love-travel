@@ -3,6 +3,8 @@
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import React from "react";
 
+import AttractionList from './attractionList'
+
 export class MapContainer extends React.Component {
   constructor(props) {
     super(props);
@@ -10,6 +12,7 @@ export class MapContainer extends React.Component {
       showingInfoWindow: false,
       activeMarker: {},
       selectedPlace: "",
+      nextData: "",
       locations: []
     };
 
@@ -31,6 +34,7 @@ export class MapContainer extends React.Component {
   onMarkerClick = (googleProps, marker, e, location) => {
     this.setState({
       selectedPlace: location,
+      nextData: location,
       activeMarker: marker,
       showingInfoWindow: true
     });
@@ -81,8 +85,8 @@ export class MapContainer extends React.Component {
             </InfoWindow>
           </Map>
         </div>
-        <div style={{ float: "right" }}>
-          {this.state.selectedPlace ? "TEST" : null}
+        <div className="ui right floated segment">
+          {this.state.selectedPlace ? <AttractionList cityName={this.state.selectedPlace.name} data={this.state.nextData}/> : null}
         </div>
       </div>
     );
