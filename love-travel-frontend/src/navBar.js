@@ -12,7 +12,7 @@ const NavBar = props => {
   return (
     <div className="ui blue inverted menu" style={{marginBottom: "0px"}}>
       <div className="header item">
-        <i className="heart icon"></i> Travel
+        Learn. Love. Travel. 
       </div>
       <div className= "item">
       <Link to={`/about`} >About Us</Link>

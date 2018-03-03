@@ -6,7 +6,6 @@ import Image from "../images/travel-balloons.png"
 
 // import components
 import { Link } from 'react-router-dom'
-import SignUp from './signUp'
 
 let sectionStyle = {
   margin: 0,
@@ -27,12 +26,12 @@ const Home = props => {
         <form className="ui form">
           <input type="text" name="username" placeholder="Username" style={{backgroundColor: "rgba(52, 52, 52, 0.3)", border:"1px solid #3f2674"}}/>
           <input type="password" name="password" placeholder="Password" style={{backgroundColor: "rgba(52, 52, 52, 0.3)", border:"1px solid #3f2674"}}/>
-          <div class="ui submit button">Submit</div>
+          <div className="ui submit button">Submit</div>
         </form>
       </div>
       <div className="four wide column" style={{marginTop: "20px"}}>
         <h1 style={{color: "#3f2674"}}>Welcome to Travel Planner</h1>
-        <Link to={SignUp} style={{color: "#3f2674"}}>Click here to sign up!</Link>
+        <Link to={`/signup`} style={{color: "#3f2674"}}>Click here to sign up!</Link>
       </div>
       <div className="eight wide column">
       </div>
