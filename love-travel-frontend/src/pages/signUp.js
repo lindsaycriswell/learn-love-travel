@@ -16,7 +16,6 @@ const SignUp = props => {
       <div className="four wide column">
       </div>
       <div className="four wide column">
-
       </div>
       <div className="four wide column">
       <h2 className="ui dividing header" style={{color: "##78224a"}}>Sign Up</h2>
