@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom'
 
 const NavBar = props => {
   return (
-    <div className="ui blue inverted menu">
+    <div className="ui blue inverted menu" style={{marginBottom: "0px"}}>
       <div className="header item">
         <i className="heart icon"></i> Travel
       </div>
@@ -24,7 +24,7 @@ const NavBar = props => {
         <div className="item">
           <i className="suitcase icon"></i>
         </div>
-        <a className="ui item">Logout</a>
+        <a className="ui item">Sign Up</a>
       </div>
     </div>
   );
