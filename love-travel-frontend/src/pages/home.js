@@ -1,13 +1,13 @@
 
 
-import Image from "../images/sunrise-myanmar.jpg"
+import Image from "../images/travel-balloons.png"
 
 import React from "react";
 
 let sectionStyle = {
   margin: 0,
-  width: "100%",
-  height: "800px",
+  // width: "100vw",
+  height: "100vh",
   backgroundSize : 'cover',
   backgroundImage: `url(${Image})`
 };
