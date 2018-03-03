@@ -53,15 +53,17 @@ export class MapContainer extends React.Component {
     }
   };
 
+        // <div style={{ padding: "10px" }}>
+
   render() {
     console.log(this.state.selectedPlace);
     return (
-      <div>
-        <div style={{ padding: "10px" }}>
+      <div style={{ height: "100vh", paddingLeft: "10px" }} className="ui grid">
+        <div className="ten wide column">
           <Map
             google={this.props.google}
             onClick={this.onMapClicked}
-            style={{ width: "70%", height: "80%", position: "relative" }}
+            style={{ width: "100%", height: "90%", position: "relative" }}
             className={"map"}
             zoom={2}
           >
@@ -89,9 +91,10 @@ export class MapContainer extends React.Component {
               </div>
             </InfoWindow>
           </Map>
+          adslfkjsdlkjf
         </div>
 
-        <div className="ui right floated segment">
+        <div className="six wide column" style={{overflow: "scroll"}}>
           {this.state.selectedPlace ? (
             <AttractionList
               cityName={this.state.selectedPlace.name}
