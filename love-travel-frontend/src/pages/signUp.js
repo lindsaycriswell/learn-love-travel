@@ -12,7 +12,6 @@ class SignUp extends React.Component {
     username: '',
     errors: [],
     redirect: false
-    // currentUser: ''
   }
 
   handleUsername = (event) => {
@@ -64,19 +63,6 @@ class SignUp extends React.Component {
      }
    })
  }
-
- // setCurrentUser = (user) => {
- //   this.setState({
- //     this.props.currentUser: user
- //   }, () => console.log(this.props.currentUser))
- // }
-    //
-    //
-    // if (this.state.redirect) {
-    //  <Redirect to='/firstSignUpPage'>
-    // }
-
-
 
   render(){
     let sectionStyle = {

@@ -5,7 +5,7 @@ import React from "react";
 // import { Link } from 'react-router-dom'
 
 // other components
-import Places from "./places";
+// import Places from "./places";
 
 import AttractionList from "./attractionList";
 
@@ -91,7 +91,6 @@ export class MapContainer extends React.Component {
               </div>
             </InfoWindow>
           </Map>
-          adslfkjsdlkjf
         </div>
 
         <div className="six wide column" style={{overflow: "scroll"}}>

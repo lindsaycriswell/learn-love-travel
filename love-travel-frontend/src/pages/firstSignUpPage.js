@@ -1,11 +1,17 @@
 
-
+// react stuff
 import React from 'react'
+import { Route, Redirect } from 'react-router'
+
+
+// components
+
 
 class FirstSignUpPage extends React.Component {
   state = {
     motto: '',
-    bio: ''
+    bio: '',
+    redirect: false
   }
 
   handleMotto = (event) => {
@@ -22,11 +28,10 @@ class FirstSignUpPage extends React.Component {
 
   addUserInfo = (event) => {
     event.preventDefault()
-    this.postUserInfo(this.state.motto, this.state.addUserInfo)
+    this.postUserInfo(this.state.motto, this.state.bio)
   }
 
   postUserInfo = (motto, bio) => {
-    console.log('in the post user info', motto, bio)
     fetch(`http://localhost:3000/users/${this.props.currentUser.id}`, {
      method: "PATCH",
      headers: {
@@ -38,13 +43,18 @@ class FirstSignUpPage extends React.Component {
      })
    })
    .then(res => res.json())
-   .then(json => console.log(json))
+   .then(userJSON =>
+     this.setState({
+       redirect: true
+     })
+   )
   }
 
   render(){
-    console.log('in first sign up page', this.props.currentUser)
+    // console.log('in first sign up page', this.props.currentUser)
     return(
       <div className="ui grid">
+        {this.state.redirect ?  <Redirect to='/welcome'/> : null}
         <div className="three wide column">
         </div>
         <div className="right floated left aligned ten wide column">

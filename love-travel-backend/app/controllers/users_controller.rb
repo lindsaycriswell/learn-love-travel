@@ -43,7 +43,7 @@ end
 
 private
 def user_params
-  params.permit(:username)
+  params.permit(:username, :motto, :bio)
 end
 
 def set_user

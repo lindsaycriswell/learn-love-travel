@@ -16,6 +16,7 @@ import About from './pages/about'
 import Home from './pages/home'
 import SignUp from './pages/signUp'
 import FirstSignUpPage from './pages/firstSignUpPage'
+import Welcome from './pages/welcome'
 
 
 
@@ -45,6 +46,9 @@ class App extends React.Component {
               )} />
             <Route exact path='/firstSignUpPage' render={props => (
                 <FirstSignUpPage {...props} currentUser={this.state.currentUser} />
+              )} />
+            <Route exact path='/welcome' render={props => (
+                <Welcome {...props} currentUser={this.state.currentUser} />
               )} />
         </Switch>
       </div>
