@@ -2,10 +2,8 @@
 
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import React from "react";
-// import { Link } from 'react-router-dom'
 
 // other components
-// import Places from "./places";
 
 import AttractionList from "./attractionList";
 
@@ -92,8 +90,8 @@ export class MapContainer extends React.Component {
             </InfoWindow>
           </Map>
         </div>
-
-        <div className="six wide column" style={{overflow: "scroll"}}>
+        <div className="one wide column"></div>
+        <div className="three wide column">
           {this.state.selectedPlace ? (
             <AttractionList
               cityName={this.state.selectedPlace.name}
@@ -101,6 +99,7 @@ export class MapContainer extends React.Component {
             />
           ) : null}
         </div>
+        <div className="one wide column"></div>
       </div>
     );
   }

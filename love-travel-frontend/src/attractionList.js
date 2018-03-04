@@ -7,16 +7,16 @@ class AttractionList extends React.Component {
   render() {
     console.log(this.props.data.attractions);
     return (
-      <div className="ui relaxed divided list">
+      <div className="ui relaxed divided list" style={{textAlign: "left"}}>
         <h4>{this.props.cityName}</h4>
         <button>See City Info</button>
         <button>Add To My Trips</button>
         {this.props.data.attractions.map(attraction => (
           <div className="item">
             <img alt={attraction.name} src={attraction.image_url} className="ui left aligned mini image"/>
-            <div className="content">
-              <div className="description">{attraction.name}</div>
-            </div>
+              <div className="middle aligned content">
+                <div className="header">{attraction.name}</div>
+              </div>  
           </div>
         ))}
       </div>
