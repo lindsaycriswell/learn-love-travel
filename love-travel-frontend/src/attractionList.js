@@ -23,7 +23,6 @@ class AttractionList extends React.Component {
   render() {
     return (
       <div className="ui relaxed divided list" style={{ textAlign: "left" }}>
-        {console.log(this.propsaa)}
         {this.state.redirect ? <Redirect to="/makeTrip" /> : null}
         <Link
           to={`/locations/${this.props.location.url_name}`}
