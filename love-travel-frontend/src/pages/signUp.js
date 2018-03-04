@@ -6,7 +6,8 @@ import Image from "../images/sunrise-myanmar.jpg";
 class SignUp extends React.Component {
 
   state={
-    username: ''
+    username: '',
+    errors: []
   }
 
   handleUsername = (event) => {
@@ -45,7 +46,13 @@ class SignUp extends React.Component {
      })
    })
    .then(res => res.json())
-   .then(json => console.log(json))
+   .then(userJSON => {
+     if (userJSON.errors){
+       this.setState({
+         errors: userJSON.errors
+       })
+     }
+   })
  }
 
 
@@ -70,6 +77,10 @@ class SignUp extends React.Component {
           <form className="ui form" onSubmit={this.addUser}>
             <input type="text" name="username" placeholder="Username" style={{backgroundColor: "rgba(52, 52, 52, 0.3)", border:"1px solid ##78224a"}} value={this.state.username} onInput={this.handleUsername}/>
             <button className="ui submit button">Submit</button>
+            {this.state.errors.length > 0 ?
+              <div className="ui negative message">
+              {this.state.errors.map(error => <p key={error}>{error}</p>)}
+          </div> : null}
           </form>
         </div>
         <div className="four wide column">
