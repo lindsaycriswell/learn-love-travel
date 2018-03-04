@@ -20,6 +20,7 @@ import SignUp from './pages/signUp'
 import FirstSignUpPage from './pages/firstSignUpPage'
 import Welcome from './pages/welcome'
 import MakeTrip from './pages/makeTrip'
+import YourTrips from './pages/yourTrips'
 
 
 class App extends React.Component {
@@ -37,7 +38,7 @@ class App extends React.Component {
   setCity = (cityData) => {
     this.setState({
       city: cityData
-    }, () => console.log(this.state.city))
+    })
   }
 
   render() {
@@ -64,6 +65,9 @@ class App extends React.Component {
               )} />
             <Route exact path='/makeTrip' render={props => (
                 <MakeTrip {...props} currentUser={this.state.currentUser} currentCity={this.state.city}/>
+              )} />
+            <Route exact path='/yourTrips' render={props => (
+                <YourTrips {...props} currentUser={this.state.currentUser}/>
               )} />
         </Switch>
       </div>
