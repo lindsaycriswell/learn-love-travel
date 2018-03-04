@@ -11,7 +11,8 @@ import { Link } from 'react-router-dom'
 class Home extends React.Component {
 
   state = {
-    username: ''
+    username: '',
+    invalid: ''
   }
 
   handleUsername = (event) => {
@@ -38,10 +39,14 @@ class Home extends React.Component {
       })
     })
     .then(res => res.json())
-    .then(json => console.log(json))
-    // CONSOLE LOGGING INVALID IF NO USER BY THAT USERNAME
+    .then(userJSON => {
+      if (userJSON.message === "Invalid") {
+        this.setState({
+          invalid: userJSON.message
+        })// THIS IS RENDERING AN ERROR MESSAGE PROPERLY
+      }
+    })
   }
-
 
 render(){
   let sectionStyle = {
@@ -62,10 +67,14 @@ render(){
           <input type="text" name="username" placeholder="Username" onChange={this.handleUsername} value={this.state.username} style={{backgroundColor: "rgba(52, 52, 52, 0.3)", border:"1px solid #3f2674"}}/>
           <button className="ui submit button">Submit</button>
         </form>
+        {this.state.invalid ?
+          <div className="ui negative message">
+          <p>Incorrect Username/Password</p>
+      </div> : null}
       </div>
       <div className="four wide column" style={{marginTop: "20px"}}>
         <h1 style={{color: "#3f2674"}}>Welcome to Travel Planner</h1>
-        <Link to={`/signup`} style={{color: "#3f2674"}}>Click here to sign up!</Link>
+        <Link to={`/signup`} className="ui header" style={{color: "#3f2674"}}>Click here to sign up!</Link>
       </div>
       <div className="eight wide column">
       </div>
