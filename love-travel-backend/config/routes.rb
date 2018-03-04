@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   resources :users
 
   namespace :api do
@@ -9,5 +10,6 @@ Rails.application.routes.draw do
   end
 
   post '/check_user' => 'users#check_user'
+  post '/make_trip' => 'users#make_trip'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

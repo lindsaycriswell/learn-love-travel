@@ -38,7 +38,6 @@ class SignUp extends React.Component {
   }
 
   fetchMakeUser = (username) => {
-    console.log("in the fetch make user", username)
     fetch(`http://localhost:3000/users/`, {
      method: "POST",
      headers: {

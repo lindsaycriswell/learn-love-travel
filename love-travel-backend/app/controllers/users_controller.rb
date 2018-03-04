@@ -3,8 +3,12 @@ class UsersController < ApplicationController
 
   # skip_before_action :require_login, only: [:new, :create, :show]
 
-def check_user
+def make_trip
   byebug
+  # UserTrip.create()
+end
+
+def check_user
   @user = User.find_by(username: params[:username])
   if @user
     render json: @user
@@ -19,7 +23,6 @@ def index
 end
 
 def create
-  # byebug
   user = User.new(user_params)
   if user.valid?
     user.save
