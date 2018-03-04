@@ -23,15 +23,16 @@ class AttractionList extends React.Component {
   render() {
     return (
       <div className="ui relaxed divided list" style={{ textAlign: "left" }}>
+        {console.log(this.propsaa)}
         {this.state.redirect ? <Redirect to="/makeTrip" /> : null}
         <Link
-          to={`/locations/${this.props.data.url_name}`}
-          key={this.props.data.id}
+          to={`/locations/${this.props.location.url_name}`}
+          key={this.props.location.id}
         >
           <h1>{this.props.cityName}</h1>
         </Link>
         <button onClick={this.addTrip}>Add To My Trips</button>
-        {this.props.data.attractions.map(attraction => (
+        {this.props.location.attractions.map(attraction => (
           <div key={attraction.id} className="item">
             <img
               alt={attraction.name}

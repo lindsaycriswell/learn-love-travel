@@ -82,6 +82,7 @@ export class MapContainer extends React.Component {
             <AttractionList
               setCity={this.props.setCity}
               cityName={this.state.selectedPlace.name}
+              location={this.state.selectedPlace}
               data={this.state.nextData}
               key={this.state.selectedPlace.id}
             />
