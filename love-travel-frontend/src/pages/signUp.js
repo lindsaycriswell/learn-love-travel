@@ -1,13 +1,18 @@
 // react stuff
 import React from "react";
 import Image from "../images/sunrise-myanmar.jpg";
+import { Route, Redirect } from 'react-router'
 
+// components
+import FirstSignUpPage from './firstSignUpPage'
 
 class SignUp extends React.Component {
 
   state={
     username: '',
-    errors: []
+    errors: [],
+    redirect: false
+    // currentUser: ''
   }
 
   handleUsername = (event) => {
@@ -51,13 +56,29 @@ class SignUp extends React.Component {
        this.setState({
          errors: userJSON.errors
        })
+     } else {
+       this.props.setCurrentUser(userJSON)
+       this.setState({
+         redirect: true
+       })
      }
    })
  }
 
+ // setCurrentUser = (user) => {
+ //   this.setState({
+ //     this.props.currentUser: user
+ //   }, () => console.log(this.props.currentUser))
+ // }
+    //
+    //
+    // if (this.state.redirect) {
+    //  <Redirect to='/firstSignUpPage'>
+    // }
+
+
 
   render(){
-
     let sectionStyle = {
       margin: 0,
       // width: "100vw",
@@ -68,6 +89,7 @@ class SignUp extends React.Component {
 
     return (
       <div style={sectionStyle} className="ui grid">
+        {this.state.redirect ?  <Redirect to='/firstSignUpPage'/> : null}
         <div className="four wide column">
         </div>
         <div className="four wide column">
