@@ -6,13 +6,12 @@ import Image from "../images/travel-balloons.png"
 import { Link } from 'react-router-dom'
 
 // import components
-import UserApi from '../adapters/userApi'
+// import UserApi from '../adapters/userApi'
 
 class Home extends React.Component {
 
   state = {
-    username: '',
-
+    username: ''
   }
 
   handleUsername = (event) => {

@@ -6,9 +6,7 @@ import Image from "../images/sunrise-myanmar.jpg";
 class SignUp extends React.Component {
 
   state={
-    username: '',
-    password: '',
-    password_confirmation: ''
+    username: ''
   }
 
   handleUsername = (event) => {
@@ -36,6 +34,7 @@ class SignUp extends React.Component {
   }
 
   fetchMakeUser = (username) => {
+    console.log("in the fetch make user", username)
     fetch(`http://localhost:3000/users/`, {
      method: "POST",
      headers: {
@@ -44,7 +43,9 @@ class SignUp extends React.Component {
      body: JSON.stringify({
        username: username,
      })
-   }).then(res => res.json())
+   })
+   .then(res => res.json())
+   .then(json => console.log(json))
  }
 
 
@@ -68,7 +69,7 @@ class SignUp extends React.Component {
           <h2 className="ui dividing header" style={{color: "##78224a"}}>Sign Up</h2>
           <form className="ui form" onSubmit={this.addUser}>
             <input type="text" name="username" placeholder="Username" style={{backgroundColor: "rgba(52, 52, 52, 0.3)", border:"1px solid ##78224a"}} value={this.state.username} onInput={this.handleUsername}/>
-            <div className="ui submit button">Submit</div>
+            <button className="ui submit button">Submit</button>
           </form>
         </div>
         <div className="four wide column">
