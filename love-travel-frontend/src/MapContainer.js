@@ -14,23 +14,12 @@ export class MapContainer extends React.Component {
       showingInfoWindow: false,
       activeMarker: {},
       selectedPlace: "",
-      nextData: "",
-      locations: []
+      nextData: ""
     };
 
     // binding this to event-handler functions
     this.onMarkerClick = this.onMarkerClick.bind(this);
     this.onMapClicked = this.onMapClicked.bind(this);
-  }
-
-  componentDidMount() {
-    fetch("http://localhost:3000/api/v1/locations")
-      .then(res => res.json())
-      .then(json =>
-        this.setState({
-          locations: json
-        })
-      );
   }
 
   onMarkerClick = (googleProps, marker, e, location) => {
@@ -50,7 +39,7 @@ export class MapContainer extends React.Component {
     }
   };
 
-        // <div style={{ padding: "10px" }}>
+  // <div style={{ padding: "10px" }}>
 
   render() {
     return (
@@ -63,7 +52,7 @@ export class MapContainer extends React.Component {
             className={"map"}
             zoom={2}
           >
-            {this.state.locations.map(location => (
+            {this.props.locations.map(location => (
               <Marker
                 key={location.id}
                 onClick={(googleProps, marker, e) =>
@@ -80,7 +69,6 @@ export class MapContainer extends React.Component {
             <InfoWindow
               marker={this.state.activeMarker}
               visible={this.state.showingInfoWindow}
-              onClick={this.testClick}
             >
               <div>
                 <h1>{this.state.selectedPlace.name}</h1>
@@ -88,17 +76,18 @@ export class MapContainer extends React.Component {
             </InfoWindow>
           </Map>
         </div>
-        <div className="one wide column"></div>
+        <div className="one wide column" />
         <div className="three wide column">
           {this.state.selectedPlace ? (
             <AttractionList
               setCity={this.props.setCity}
               cityName={this.state.selectedPlace.name}
-              data={this.state.selectedPlace}
+              data={this.state.nextData}
+              key={this.state.selectedPlace.id}
             />
           ) : null}
         </div>
-        <div className="one wide column"></div>
+        <div className="one wide column" />
       </div>
     );
   }
