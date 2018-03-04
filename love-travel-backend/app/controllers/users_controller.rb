@@ -4,6 +4,7 @@ class UsersController < ApplicationController
   # skip_before_action :require_login, only: [:new, :create, :show]
 
 def check_user
+  byebug
   @user = User.find_by(username: params[:username])
   if @user
     render json: @user

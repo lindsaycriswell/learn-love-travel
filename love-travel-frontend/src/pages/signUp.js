@@ -1,10 +1,9 @@
 // react stuff
 import React from "react";
 import Image from "../images/sunrise-myanmar.jpg";
-import { Route, Redirect } from 'react-router'
+import { Redirect } from 'react-router'
 
 // components
-import FirstSignUpPage from './firstSignUpPage'
 
 class SignUp extends React.Component {
 
@@ -80,7 +79,7 @@ class SignUp extends React.Component {
         </div>
         <div className="four wide column">
         </div>
-        <div className="four wide column">
+        <div className="four wide column" style={{marginTop: "20px"}}>
           <h2 className="ui dividing header" style={{color: "##78224a"}}>Sign Up</h2>
           <form className="ui form" onSubmit={this.addUser}>
             <input type="text" name="username" placeholder="Username" style={{backgroundColor: "rgba(52, 52, 52, 0.3)", border:"1px solid ##78224a"}} value={this.state.username} onInput={this.handleUsername}/>

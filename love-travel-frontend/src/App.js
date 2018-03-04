@@ -5,7 +5,6 @@ import { Switch, Route } from 'react-router-dom'
 
 // import styling
 import "./App.css";
-import Image from "./images/sunrise-myanmar.jpg"
 
 // components
 import NavBar from "./navBar";
@@ -38,7 +37,9 @@ class App extends React.Component {
       <div className="App">
         <NavBar />
         <Switch>
-            <Route exact path='/' component={Home}/>
+            <Route exact path='/' render={props => (
+                <Home {...props} currentUser={this.state.currentUser} setCurrentUser={this.setCurrentUser}/>
+              )} />
             <Route exact path='/map' component={MapContainer}/>
             <Route exact path='/about' component={About}/>
             <Route exact path='/signup' render={props => (
@@ -56,6 +57,7 @@ class App extends React.Component {
   }
 }
 
+// <Route exact path='/' component={Home}/>
 // <Route exact path='/signup' data={this.state.currentUser} component={SignUp}/>
 // <Route exact path='/firstSignUpPage' data={this.state.currentUser} component={FirstSignUpPage} />
 

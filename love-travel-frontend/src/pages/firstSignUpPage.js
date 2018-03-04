@@ -1,7 +1,7 @@
 
 // react stuff
 import React from 'react'
-import { Route, Redirect } from 'react-router'
+import {Redirect } from 'react-router'
 
 
 // components

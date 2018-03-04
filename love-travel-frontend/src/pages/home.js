@@ -4,6 +4,7 @@
 import React from "react";
 import Image from "../images/travel-balloons.png"
 import { Link } from 'react-router-dom'
+import { Redirect } from 'react-router'
 
 // import components
 // import UserApi from '../adapters/userApi'
@@ -12,7 +13,8 @@ class Home extends React.Component {
 
   state = {
     username: '',
-    invalid: ''
+    invalid: '',
+    redirect: false
   }
 
   handleUsername = (event) => {
@@ -26,9 +28,7 @@ class Home extends React.Component {
     this.fetchCheckUser(this.state.username)
   }
 
-// THIS IS WORKING
   fetchCheckUser = (username) => {
-    console.log('in the fetch check user', username)
     fetch('http://localhost:3000/check_user', {
       method: "POST",
       headers: {
@@ -43,7 +43,13 @@ class Home extends React.Component {
       if (userJSON.message === "Invalid") {
         this.setState({
           invalid: userJSON.message
-        })// THIS IS RENDERING AN ERROR MESSAGE PROPERLY
+        })
+      } else {
+        // render the new shit here
+        this.props.setCurrentUser(userJSON)
+        this.setState({
+          redirect: true
+        })
       }
     })
   }
@@ -59,10 +65,11 @@ render(){
 
   return(
     <div style={sectionStyle} className="ui grid">
-      <div className="four wide column">
+      {this.state.redirect ?  <Redirect to='/welcome'/> : null}
+      <div className="three wide column">
       </div>
       <div className="four wide column">
-        <h2 className="ui dividing header" style={{color: "#3f2674"}}>Sign In</h2>
+        <h2 className="ui dividing header" style={{color: "#3f2674", marginTop: "20px"}}>Sign In</h2>
         <form className="ui form" onSubmit={this.checkUser}>
           <input type="text" name="username" placeholder="Username" onChange={this.handleUsername} value={this.state.username} style={{backgroundColor: "rgba(52, 52, 52, 0.3)", border:"1px solid #3f2674"}}/>
           <button className="ui submit button">Submit</button>

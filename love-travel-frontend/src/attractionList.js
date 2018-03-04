@@ -1,6 +1,5 @@
 import React from "react";
 
-import { Link } from 'react-router-dom'
 
 
 class AttractionList extends React.Component {
@@ -14,7 +13,7 @@ class AttractionList extends React.Component {
         <button>Add To My Trips</button>
         {this.props.data.attractions.map(attraction => (
           <div className="item">
-            <img src={attraction.image_url} className="ui left aligned mini image"/>
+            <img alt={attraction.name} src={attraction.image_url} className="ui left aligned mini image"/>
             <div className="content">
               <div className="description">{attraction.name}</div>
             </div>
