@@ -5,7 +5,6 @@ import React from "react";
 // import { Link } from 'react-router-dom'
 
 // other components
-// import Places from "./places";
 
 import AttractionList from "./attractionList";
 
@@ -16,23 +15,12 @@ export class MapContainer extends React.Component {
       showingInfoWindow: false,
       activeMarker: {},
       selectedPlace: "",
-      nextData: "",
-      locations: []
+      nextData: ""
     };
 
     // binding this to event-handler functions
     this.onMarkerClick = this.onMarkerClick.bind(this);
     this.onMapClicked = this.onMapClicked.bind(this);
-  }
-
-  componentDidMount() {
-    fetch("http://localhost:3000/api/v1/locations")
-      .then(res => res.json())
-      .then(json =>
-        this.setState({
-          locations: json
-        })
-      );
   }
 
   onMarkerClick = (googleProps, marker, e, location) => {
@@ -53,10 +41,9 @@ export class MapContainer extends React.Component {
     }
   };
 
-        // <div style={{ padding: "10px" }}>
+  // <div style={{ padding: "10px" }}>
 
   render() {
-    console.log(this.state.selectedPlace);
     return (
       <div style={{ height: "100vh", paddingLeft: "10px" }} className="ui grid">
         <div className="ten wide column">
@@ -67,7 +54,7 @@ export class MapContainer extends React.Component {
             className={"map"}
             zoom={2}
           >
-            {this.state.locations.map(location => (
+            {this.props.locations.map(location => (
               <Marker
                 key={location.id}
                 onClick={(googleProps, marker, e) =>
@@ -84,7 +71,6 @@ export class MapContainer extends React.Component {
             <InfoWindow
               marker={this.state.activeMarker}
               visible={this.state.showingInfoWindow}
-              onClick={this.testClick}
             >
               <div>
                 <h1>{this.state.selectedPlace.name}</h1>
@@ -93,11 +79,12 @@ export class MapContainer extends React.Component {
           </Map>
         </div>
 
-        <div className="six wide column" style={{overflow: "scroll"}}>
+        <div className="six wide column" style={{ overflow: "scroll" }}>
           {this.state.selectedPlace ? (
             <AttractionList
               cityName={this.state.selectedPlace.name}
               data={this.state.nextData}
+              key={this.state.selectedPlace.id}
             />
           ) : null}
         </div>
