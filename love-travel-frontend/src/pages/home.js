@@ -3,27 +3,55 @@
 // react stuff
 import React from "react";
 import Image from "../images/travel-balloons.png"
-
-// import components
 import { Link } from 'react-router-dom'
 
-let sectionStyle = {
-  margin: 0,
-  // width: "100vw",
-  height: "100vh",
-  backgroundSize : 'cover',
-  backgroundImage: `url(${Image})`
-};
+// import components
+import UserApi from '../adapters/userApi'
 
-// const login = (username, password) => {
-//   return fetch(`${API_ROOT}/auth/`, {
-//     method: 'POST',
-//     headers: headers,
-//     body: JSON.stringify({ username, password });
-//   }).then(res => res.json());
-// }
+class Home extends React.Component {
 
-const Home = props => {
+  state = {
+    username: '',
+
+  }
+
+  handleUsername = (event) => {
+    this.setState({
+      username: event.target.value
+    })
+  }
+
+  checkUser = (event) => {
+    event.preventDefault()
+    this.fetchCheckUser(this.state.username)
+  }
+
+// THIS IS WORKING
+  fetchCheckUser = (username) => {
+    console.log('in the fetch check user', username)
+    fetch('http://localhost:3000/check_user', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        username: username
+      })
+    })
+    .then(res => res.json())
+    .then(json => console.log(json))
+    // CONSOLE LOGGING INVALID IF NO USER BY THAT USERNAME
+  }
+
+
+render(){
+  let sectionStyle = {
+    margin: 0,
+    // width: "100vw",
+    height: "100vh",
+    backgroundSize : 'cover',
+    backgroundImage: `url(${Image})`
+  };
 
   return(
     <div style={sectionStyle} className="ui grid">
@@ -31,10 +59,9 @@ const Home = props => {
       </div>
       <div className="four wide column">
         <h2 className="ui dividing header" style={{color: "#3f2674"}}>Sign In</h2>
-        <form className="ui form">
-          <input type="text" name="username" placeholder="Username" style={{backgroundColor: "rgba(52, 52, 52, 0.3)", border:"1px solid #3f2674"}}/>
-          <input type="password" name="password" placeholder="Password" style={{backgroundColor: "rgba(52, 52, 52, 0.3)", border:"1px solid #3f2674"}}/>
-          <div className="ui submit button">Submit</div>
+        <form className="ui form" onSubmit={this.checkUser}>
+          <input type="text" name="username" placeholder="Username" onChange={this.handleUsername} value={this.state.username} style={{backgroundColor: "rgba(52, 52, 52, 0.3)", border:"1px solid #3f2674"}}/>
+          <button className="ui submit button">Submit</button>
         </form>
       </div>
       <div className="four wide column" style={{marginTop: "20px"}}>
@@ -45,6 +72,10 @@ const Home = props => {
       </div>
     </div>
   )
+}
+
 };
+
+// <input type="password" name="password" placeholder="Password" style={{backgroundColor: "rgba(52, 52, 52, 0.3)", border:"1px solid #3f2674"}}/>
 
 export default Home;

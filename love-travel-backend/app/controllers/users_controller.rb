@@ -1,10 +1,10 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show,:update,:destroy]
 
-  skip_before_action :require_login, only: [:new, :create, :show]
+  # skip_before_action :require_login, only: [:new, :create, :show]
 
 def check_user
-  @user = User.find_by(username: params[:user][:username])
+  @user = User.find_by(username: params[:username])
   if @user
     render json: @user
   else
@@ -18,6 +18,7 @@ def index
 end
 
 def create
+  # byebug
   user = User.new(user_params)
   if user.valid?
     user.save
@@ -42,7 +43,7 @@ end
 
 private
 def user_params
-  params.permit(:username, :password, :password_confirmation, :motto, :bio)
+  params.permit(:username, :password, :password_confirmation)
 end
 
 def set_user
