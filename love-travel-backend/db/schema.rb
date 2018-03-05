@@ -45,7 +45,7 @@ ActiveRecord::Schema.define(version: 20180303212935) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "user_trips", force: :cascade do |t|
+  create_table "trips", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "location_id"
     t.datetime "start_date"
@@ -54,8 +54,8 @@ ActiveRecord::Schema.define(version: 20180303212935) do
     t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["location_id"], name: "index_user_trips_on_location_id"
-    t.index ["user_id"], name: "index_user_trips_on_user_id"
+    t.index ["location_id"], name: "index_trips_on_location_id"
+    t.index ["user_id"], name: "index_trips_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|

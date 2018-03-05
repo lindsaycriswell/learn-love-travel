@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   resources :users do
     post '/make_trip' => 'users#make_trip'
+    patch '/trips' => 'users#update_trip'
     get '/your_trips' => 'users#your_trips'
   end
 

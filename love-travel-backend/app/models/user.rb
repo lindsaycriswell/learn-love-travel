@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  has_many :user_trips
-  has_many :locations, through: :user_trips
+  has_many :trips
+  has_many :locations, through: :trips
 
   # has_secure_password
 
