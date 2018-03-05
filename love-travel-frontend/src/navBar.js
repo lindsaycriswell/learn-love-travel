@@ -15,17 +15,17 @@ const NavBar = props => {
       <div className="header item">
         Learn. Love. Travel.
       </div>
-      <div className= "item">
+      <div className= "ui item">
       <Link to={`/about`} >About Us</Link>
       </div>
-      <div className="item">
-      <Link to={`/map`}>Map</Link>
-      </div>
-      <div className="item">
-      <Link to={`/yourTrips`}>Your Trips</Link>
-      </div>
+      {props.currentUser ?
+        <React.Fragment>
+          <Link to={`/map`} className="ui item" >Map</Link>
+          <Link to={`/yourTrips`} className="ui item" >Your Trips</Link>
+        </React.Fragment>
+        : null }
       <div className="right menu">
-        <div className="item">
+        <div className="ui item">
           <i className="suitcase icon"></i>
         </div>
         {props.currentUser ? <a onClick={props.logOut} className="ui item">Log Out</a> : <Link to={`/signUp`} className="ui item">Sign Up</Link>}
