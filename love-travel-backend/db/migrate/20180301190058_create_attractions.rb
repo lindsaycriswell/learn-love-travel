@@ -15,6 +15,8 @@ class CreateAttractions < ActiveRecord::Migration[5.1]
       t.string :zip_code
       t.string :country
       t.string :display_address
+      t.string :url_name
+      t.string :yelp_id
 
       t.timestamps
     end

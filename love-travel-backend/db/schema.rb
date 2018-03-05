@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 20180303212935) do
     t.string "zip_code"
     t.string "country"
     t.string "display_address"
+    t.string "url_name"
+    t.string "yelp_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
