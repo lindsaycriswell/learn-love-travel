@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
-  resources :users
+  resources :users do
+    post '/make_trip' => 'users#make_trip'
+    get '/your_trips' => 'users#your_trips'
+  end
 
   namespace :api do
     namespace :v1 do
@@ -10,6 +13,7 @@ Rails.application.routes.draw do
   end
 
   post '/check_user' => 'users#check_user'
-  post '/make_trip' => 'users#make_trip'
+
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

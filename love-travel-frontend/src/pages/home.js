@@ -25,6 +25,7 @@ class Home extends React.Component {
 
   checkUser = (event) => {
     event.preventDefault()
+    console.log(this.state.username)
     this.fetchCheckUser(this.state.username)
   }
 
