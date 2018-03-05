@@ -84,7 +84,12 @@ class App extends React.Component {
           <Route
             path="/locations/:name"
             render={routerParams => {
-              return <Location location={this.findLocation(routerParams)} />;
+              return (
+                <Location
+                  location={this.findLocation(routerParams)}
+                  findLocation={this.findLocation}
+                />
+              );
             }}
           />
           <Route

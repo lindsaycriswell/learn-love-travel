@@ -2,6 +2,7 @@ import React from "react";
 import Attraction from "./Attraction";
 import PhotoList from "./PhotoList";
 import Photo from "./Photo";
+import CommentContainer from "./CommentContainer";
 import Unsplash from "unsplash-js";
 
 const unsplash = new Unsplash({
@@ -28,19 +29,33 @@ class Location extends React.Component {
   }
 
   render() {
+    console.log(this.props.location.url_name);
     return (
       <div>
         <h1>{this.props.location.name}</h1>
         {this.state.photos[0] ? <Photo photo={this.state.photos[0]} /> : null}
-        <div className="ui relaxed divided list">
-          <h3>Popular Attractions</h3>
-          {this.props.location.attractions.map(attraction => (
-            <Attraction attraction={attraction} key={attraction.id} />
-          ))}
-        </div>
+        {this.props.location.attractions ? (
+          <div className="ui relaxed divided list">
+            <h2>Popular Attractions</h2>
+            {this.props.location.attractions.map(attraction => (
+              <Attraction attraction={attraction} key={attraction.id} />
+            ))}
+          </div>
+        ) : null}
         <div>
           <PhotoList photos={this.state.photos.slice(1)} />
         </div>
+        {this.props.location.comments.length > 0 ? (
+          <div>
+            <h2>Reviews of {this.props.location.name}</h2>
+            <CommentContainer
+              comments={this.props.location.comments}
+              location_id={this.props.location.id}
+            />
+          </div>
+        ) : (
+          <h2>Be the first to review {this.props.location.name}</h2>
+        )}
       </div>
     );
   }
