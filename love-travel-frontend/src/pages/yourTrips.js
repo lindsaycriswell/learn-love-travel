@@ -19,22 +19,22 @@ class YourTrips extends React.Component  {
   componentDidMount() {
     fetch(`http://localhost:3000/users/${this.props.currentUser.id}/yourtrips`)
     .then(res => res.json())
-    .then(yourTripsJSON => {
+    .then(trips => {
       this.setState({
-        yourTrips: yourTripsJSON
+        yourTrips: trips
       })
     })
   }
 
-  handleEditClick = (cityInfo) => {
+  handleEditClick = (trip) => {
     this.setState({
-      editTrip: cityInfo
-    })
+      editTrip: trip
+    }, () => console.log(this.state.editTrip))
   }
 
   render() {
     //need to sort by most recent first
-  console.log(this.state.yourTrips)
+  // console.log(this.state.yourTrips)
     return(
       <div className="ui grid" style={{paddingTop: "30px"}}>
         <div className="three wide column"></div>
@@ -52,7 +52,7 @@ class YourTrips extends React.Component  {
           </div>
           </div>
           <div className="nine wide column">
-          {this.state.editTrip ? <EditTrip user={this.props.currentUser.id} data={this.state.editTrip} />: null }</div>
+          {this.state.editTrip ? <EditTrip user={this.props.currentUser} data={this.state.editTrip} />: null }</div>
       </div>
     )}
 
