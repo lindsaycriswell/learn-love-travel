@@ -9,8 +9,7 @@ class AttractionList extends React.Component {
 
   addTrip = event => {
     event.preventDefault();
-    console.log(this.props);
-    this.renderTripPage(this.props.data);
+    this.renderTripPage(this.props.location);
   };
 
   renderTripPage = value => {

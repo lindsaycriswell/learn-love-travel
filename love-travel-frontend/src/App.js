@@ -19,6 +19,7 @@ import FirstSignUpPage from "./pages/firstSignUpPage";
 import Welcome from "./pages/welcome";
 import MakeTrip from "./pages/makeTrip";
 import Location from "./Location";
+import YourTrips from './pages/yourTrips'
 // import AttractionList from "./attractionList";
 
 class App extends React.Component {
@@ -47,7 +48,7 @@ class App extends React.Component {
   setCity = (cityData) => {
     this.setState({
       city: cityData
-    })
+    }, () => console.log(this.state.city))
   }
 
 
@@ -62,17 +63,25 @@ class App extends React.Component {
       <div className="App">
         <NavBar />
         <Switch>
-          <Route
-            path="/locations/:name" render={routerParams => {
-              return <Location location={this.findByName(routerParams)} />;
+          <Route path="/locations/:name" render={routerParams => {
+              return <Location location={this.findByName(routerParams)} />
             }}
           />
           <Route exact path='/' render={props => (
               <Home {...props} currentUser={this.state.currentUser} setCurrentUser={this.setCurrentUser}/>
             )} />
-          <Route exact path='/map' render={props => (
-              <MapContainer {...props} setCity={this.setCity} currentUser={this.state.currentUser}/>
-            )} />
+            <Route
+              exact
+              path="/map"
+              render={props => (
+                <MapContainer
+                  {...props}
+                  setCity={this.setCity}
+                  currentUser={this.state.currentUser}
+                  locations={this.state.locations}
+                />
+              )}
+            />
           <Route exact path='/about' component={About}/>
           <Route exact path='/signup' render={props => (
               <SignUp {...props} currentUser={this.state.currentUser} setCurrentUser={this.setCurrentUser}/>

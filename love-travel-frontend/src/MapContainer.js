@@ -14,7 +14,6 @@ export class MapContainer extends React.Component {
       showingInfoWindow: false,
       activeMarker: {},
       selectedPlace: "",
-      nextData: ""
     };
 
     // binding this to event-handler functions
@@ -83,7 +82,6 @@ export class MapContainer extends React.Component {
               setCity={this.props.setCity}
               cityName={this.state.selectedPlace.name}
               location={this.state.selectedPlace}
-              data={this.state.nextData}
               key={this.state.selectedPlace.id}
             />
           ) : null}

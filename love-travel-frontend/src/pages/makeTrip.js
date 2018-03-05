@@ -19,6 +19,7 @@ state = {
 
 makeTrip = (event) => {
   event.preventDefault()
+  console.log(this.props.currentCity)
   this.postTrip(this.state.startDate, this.state.endDate, this.props.currentCity, this.props.currentUser, this.state.notes)
 }
 
@@ -37,20 +38,24 @@ postTrip = (start, end, city, user, notes) => {
     body: JSON.stringify({
       start_date: start,
       end_date: end,
-      location: city,
-      user: user,
+      location_id: city.id,
+      user_id: user.id,
       notes: notes
     })
   })
   .then(res => res.json())
-  .then(json => console.log(json))
+  .then(json => {
+    this.setState({
+      redirect: true
+    })
+  })
 }
 
   // {this.state.redirect ?  <Redirect to='/yourTrips'/> : null}
   render(){
     return(
       <div>
-
+        {this.state.redirect ? <Redirect to='/yourTrips'/> : null}
         <h1>Let's go to {this.props.currentCity.name}</h1>
         <h4>Select Dates</h4>
         <DateRangePicker
