@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   resources :comments
   resources :users do
     post '/maketrip' => 'trips#create'
-    patch '/trips' => 'trips#update'
+    patch '/trips/:trip_id' => 'trips#update'
     get '/yourtrips' => 'trips#index'
   end
 
