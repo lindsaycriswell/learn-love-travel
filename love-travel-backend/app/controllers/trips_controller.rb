@@ -14,7 +14,11 @@ class TripsController < ApplicationController
   end
 
   def update
-    @user = User.find(params[:user_id])
+    @trip = Trip.find_by(id: params[:trip_id])
+    byebug
+    @trip.update(start_date: params["start_date"], end_date: params["end_date"], notes: params["notes"])
+    byebug
+    render json: @trip
   end
 
 end
