@@ -1,7 +1,7 @@
 // import react dependencies
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-import api from './service/api'
+import api from "./service/api";
 
 // import styling
 import "./App.css";
@@ -24,29 +24,28 @@ import YourTrips from "./pages/yourTrips";
 import AttractionDetail from "./AttractionDetail";
 // import AttractionList from "./attractionList";
 
-
 // this one needs to be on the bottom
 
 class App extends React.Component {
   state = {
     auth: {
-      loggedIn: false,
+      loggedIn: false
     },
     city: "",
     locations: [],
     attractions: [],
-    currentUser: ''
+    currentUser: ""
   };
 
   componentDidMount() {
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem("token");
     if (token) {
       this.setState({
         auth: {
           loggedIn: true,
           token: token
         }
-      })
+      });
     }
 
     fetch("http://localhost:3000/api/v1/locations")
@@ -73,10 +72,9 @@ class App extends React.Component {
   // };
 
   setCity = cityData => {
-    this.setState(
-      {
-        city: cityData
-      })
+    this.setState({
+      city: cityData
+    });
   };
 
   findLocation = routerParams => {
@@ -93,37 +91,38 @@ class App extends React.Component {
 
   // TAKEN FROM LECTURE
   login = (username, password) => {
-    console.log('in the app login', username, password)
+    console.log("in the app login", username, password);
     api.login(username, password).then(j => {
-      if(j.error) {
-        alert(j.error)
+      if (j.error) {
+        alert(j.error);
       } else {
-        localStorage.setItem('token', j.token)
+        localStorage.setItem("token", j.token);
         this.setState({
           currentUser: j.user,
           auth: {
             loggedIn: true,
             token: j.token
           }
-        })
+        });
       }
-    })
-  } // ENDS LOGIN
+    });
+  }; // ENDS LOGIN
 
   logout = () => {
-    localStorage.removeItem('token')
+    localStorage.removeItem("token");
     this.setState({
+      currentUser: '',
       auth: {
         loggedIn: false,
         token: undefined
       }
-    })
-  } // ENDS LOG OUT
+    });
+  }; // ENDS LOG OUT
 
   render() {
     return (
       <div className="App">
-        <NavBar />
+        <NavBar logOut={this.logout} currentUser={this.state.currentUser}/>
         <Switch>
           <Route
             path="/locations/:name"
@@ -196,7 +195,7 @@ class App extends React.Component {
             exact
             path="/welcome"
             render={props => (
-              <Welcome {...props} currentUser={this.state.currentUser}/>
+              <Welcome {...props} currentUser={this.state.currentUser} />
             )}
           />
           <Route

@@ -2,7 +2,8 @@ import React from "react";
 
 // THIS IS JUST THE NAV BAR
 import { Link } from 'react-router-dom'
-
+import { Redirect } from 'react-router'
+import SignUp from './pages/signUp'
 // REACT COMPONENTS
 // import About from './pages/about'
 // import home from './pages/home'
@@ -27,7 +28,7 @@ const NavBar = props => {
         <div className="item">
           <i className="suitcase icon"></i>
         </div>
-        <a className="ui item">Sign Up</a>
+        {props.currentUser ? <a onClick={props.logOut} className="ui item">Log Out</a> : <Link to={`/signUp`} className="ui item">Sign Up</Link>}
       </div>
     </div>
   );
