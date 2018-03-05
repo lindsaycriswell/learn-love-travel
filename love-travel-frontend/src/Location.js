@@ -29,33 +29,50 @@ class Location extends React.Component {
   }
 
   render() {
-    console.log(this.props.location.url_name);
     return (
       <div>
-        <h1>{this.props.location.name}</h1>
-        {this.state.photos[0] ? <Photo photo={this.state.photos[0]} /> : null}
-        {this.props.location.attractions ? (
-          <div className="ui relaxed divided list">
-            <h2>Popular Attractions</h2>
-            {this.props.location.attractions.map(attraction => (
-              <Attraction attraction={attraction} key={attraction.id} />
-            ))}
+        <div />
+        <div className="ui huge header">
+          <h1 className="ui blue header">{this.props.location.name}</h1>
+        </div>
+        <div className="ui fluid image">
+          {this.state.photos[0] ? <Photo photo={this.state.photos[0]} /> : null}
+        </div>
+        <div className="ui grid">
+          <div className="two wide column" />
+          <div className="five wide column">
+            {this.props.location.attractions ? (
+              <div className="ui relaxed divided list">
+                <h2 className="ui blue header">Popular Attractions</h2>
+                {this.props.location.attractions.map(attraction => (
+                  <Attraction attraction={attraction} key={attraction.id} />
+                ))}
+              </div>
+            ) : null}
           </div>
-        ) : null}
-        <div>
+          <div className="two wide column" />
+          <div className="five wide column">
+            <div className="ui relaxed divided list">
+              {this.props.location.comments.length > 0 ? (
+                <div>
+                  <h2 className="ui blue header">
+                    Reviews of {this.props.location.name}
+                  </h2>
+                  <CommentContainer
+                    comments={this.props.location.comments}
+                    location={this.props.location}
+                  />
+                </div>
+              ) : (
+                <h2 className="ui blue header">
+                  Be the first to review {this.props.location.name}
+                </h2>
+              )}{" "}
+            </div>
+          </div>
+          <div className="two wide column" />
           <PhotoList photos={this.state.photos.slice(1)} />
         </div>
-        {this.props.location.comments.length > 0 ? (
-          <div>
-            <h2>Reviews of {this.props.location.name}</h2>
-            <CommentContainer
-              comments={this.props.location.comments}
-              location_id={this.props.location.id}
-            />
-          </div>
-        ) : (
-          <h2>Be the first to review {this.props.location.name}</h2>
-        )}
       </div>
     );
   }
