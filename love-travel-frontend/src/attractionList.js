@@ -1,6 +1,7 @@
 import React from "react";
 import { Redirect } from "react-router";
 import { Link } from "react-router-dom";
+import Attraction from "./Attraction";
 
 class AttractionList extends React.Component {
   state = {
@@ -31,16 +32,7 @@ class AttractionList extends React.Component {
         </Link>
         <button onClick={this.addTrip}>Add To My Trips</button>
         {this.props.location.attractions.map(attraction => (
-          <div key={attraction.id} className="item">
-            <img
-              alt={attraction.name}
-              src={attraction.image_url}
-              className="ui left aligned mini image"
-            />
-            <div className="middle aligned content">
-              <div className="header">{attraction.name}</div>
-            </div>
-          </div>
+          <Attraction attraction={attraction} key={attraction.id} />
         ))}
       </div>
     );
@@ -48,5 +40,16 @@ class AttractionList extends React.Component {
 }
 
 export default AttractionList;
+
+// <div key={attraction.id} className="item">
+//   <img
+//     alt={attraction.name}
+//     src={attraction.image_url}
+//     className="ui left aligned mini image"
+//   />
+//   <div className="middle aligned content">
+//     <div className="header">{attraction.name}</div>
+//   </div>
+// </div>
 
 // style={{height: "20px", width: "20px"}}

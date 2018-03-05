@@ -19,14 +19,19 @@ import FirstSignUpPage from "./pages/firstSignUpPage";
 import Welcome from "./pages/welcome";
 import MakeTrip from "./pages/makeTrip";
 import Location from "./Location";
+<<<<<<< Updated upstream
 import YourTrips from './pages/yourTrips'
+=======
+import AttractionDetail from "./AttractionDetail";
+>>>>>>> Stashed changes
 // import AttractionList from "./attractionList";
 
 class App extends React.Component {
   state = {
     currentUser: "",
     city: "",
-    locations: []
+    locations: [],
+    attractions: []
   };
 
   componentDidMount() {
@@ -35,6 +40,14 @@ class App extends React.Component {
       .then(json =>
         this.setState({
           locations: json
+        })
+      );
+
+    fetch("http://localhost:3000/api/v1/attractions")
+      .then(res => res.json())
+      .then(json =>
+        this.setState({
+          attractions: json
         })
       );
   }
@@ -52,9 +65,15 @@ class App extends React.Component {
   }
 
 
-  findByName = routerParams => {
+  findLocation = routerParams => {
     return this.state.locations.find(function(location) {
       return location.url_name === routerParams.match.params.name;
+    });
+  };
+
+  findAttraction = routerParams => {
+    return this.state.attractions.find(function(attraction) {
+      return attraction.url_name === routerParams.match.params.name;
     });
   };
 
@@ -63,8 +82,20 @@ class App extends React.Component {
       <div className="App">
         <NavBar />
         <Switch>
-          <Route path="/locations/:name" render={routerParams => {
-              return <Location location={this.findByName(routerParams)} />
+          <Route
+            path="/locations/:name"
+            render={routerParams => {
+              return <Location location={this.findLocation(routerParams)} />;
+            }}
+          />
+          <Route
+            path="/attractions/:name"
+            render={routerParams => {
+              return (
+                <AttractionDetail
+                  attraction={this.findAttraction(routerParams)}
+                />
+              );
             }}
           />
           <Route exact path='/' render={props => (
