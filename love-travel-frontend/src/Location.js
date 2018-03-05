@@ -1,5 +1,7 @@
 import React from "react";
 import Attraction from "./Attraction";
+import PhotoList from "./PhotoList";
+import Photo from "./Photo";
 import Unsplash from "unsplash-js";
 
 const unsplash = new Unsplash({
@@ -10,23 +12,34 @@ const unsplash = new Unsplash({
 });
 
 class Location extends React.Component {
+  state = {
+    photos: []
+  };
+
   componentDidMount() {
     unsplash.search
       .photos(`${this.props.location.name}`)
       .then(res => res.json())
-      .then(json => console.log(json.results));
+      .then(json =>
+        this.setState({
+          photos: json.results
+        })
+      );
   }
 
   render() {
     return (
       <div>
-        {console.log(this.props.location)}
         <h1>{this.props.location.name}</h1>
+        {this.state.photos[0] ? <Photo photo={this.state.photos[0]} /> : null}
         <div className="ui relaxed divided list">
           <h3>Popular Attractions</h3>
           {this.props.location.attractions.map(attraction => (
             <Attraction attraction={attraction} key={attraction.id} />
           ))}
+        </div>
+        <div>
+          <PhotoList photos={this.state.photos.slice(1)} />
         </div>
       </div>
     );

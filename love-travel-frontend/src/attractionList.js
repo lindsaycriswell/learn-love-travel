@@ -32,8 +32,8 @@ class AttractionList extends React.Component {
         </Link>
         <button onClick={this.addTrip}>Add To My Trips</button>
         {this.props.location.attractions.map(attraction => (
-           <div className="ui item">
-          <Attraction attraction={attraction} key={attraction.id} />
+          <div className="ui item" key={attraction.id}>
+            <Attraction attraction={attraction} />
           </div>
         ))}
       </div>
