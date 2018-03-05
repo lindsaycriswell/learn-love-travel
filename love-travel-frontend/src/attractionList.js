@@ -32,7 +32,9 @@ class AttractionList extends React.Component {
         </Link>
         <button onClick={this.addTrip}>Add To My Trips</button>
         {this.props.location.attractions.map(attraction => (
+           <div className="ui item">
           <Attraction attraction={attraction} key={attraction.id} />
+          </div>
         ))}
       </div>
     );
@@ -41,15 +43,14 @@ class AttractionList extends React.Component {
 
 export default AttractionList;
 
-// <div key={attraction.id} className="item">
-//   <img
-//     alt={attraction.name}
-//     src={attraction.image_url}
-//     className="ui left aligned mini image"
-//   />
-//   <div className="middle aligned content">
-//     <div className="header">{attraction.name}</div>
+// <div class="ui items">
+//   <div class="item">
+//     <div class="ui small image">
+//       <img src="/images/wireframe/image.png">
+//     </div>
+//     <div class="content">
+//       <div class="header">
+//         Top Aligned
+//       </div>
+//     </div>
 //   </div>
-// </div>
-
-// style={{height: "20px", width: "20px"}}

@@ -76,7 +76,7 @@ export class MapContainer extends React.Component {
           </Map>
         </div>
         <div className="one wide column" />
-        <div className="three wide column">
+        <div className="four wide column">
           {this.state.selectedPlace ? (
             <AttractionList
               setCity={this.props.setCity}
