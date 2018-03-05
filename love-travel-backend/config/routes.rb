@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     end
   end
 
+  post '/login' => 'users#login'
   post '/checkuser' => 'users#check_user'
 
 

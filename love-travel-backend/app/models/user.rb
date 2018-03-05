@@ -4,7 +4,7 @@ class User < ApplicationRecord
   has_many :comments
   has_many :locations, through: :comments
 
-  # has_secure_password
+  has_secure_password
 
   validates :username, uniqueness: true
 end

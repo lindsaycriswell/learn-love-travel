@@ -1,6 +1,7 @@
 // import react dependencies
 import React from "react";
 import { Switch, Route } from "react-router-dom";
+import api from './service/api'
 
 // import styling
 import "./App.css";
@@ -23,15 +24,31 @@ import YourTrips from "./pages/yourTrips";
 import AttractionDetail from "./AttractionDetail";
 // import AttractionList from "./attractionList";
 
+
+// this one needs to be on the bottom
+
 class App extends React.Component {
   state = {
-    currentUser: "",
+    auth: {
+      loggedIn: false,
+    },
     city: "",
     locations: [],
-    attractions: []
+    attractions: [],
+    currentUser: ''
   };
 
   componentDidMount() {
+    const token = localStorage.getItem('token')
+    if (token) {
+      this.setState({
+        auth: {
+          loggedIn: true,
+          token: token
+        }
+      })
+    }
+
     fetch("http://localhost:3000/api/v1/locations")
       .then(res => res.json())
       .then(json =>
@@ -47,21 +64,19 @@ class App extends React.Component {
           attractions: json
         })
       );
-  }
+  } // ends COMPONENT DID MOUNT
 
-  setCurrentUser = user => {
-    this.setState({
-      currentUser: user
-    });
-  };
+  // setCurrentUser = user => {
+  //   this.setState({
+  //     currentUser: user
+  //   })
+  // };
 
   setCity = cityData => {
     this.setState(
       {
         city: cityData
-      },
-      () => console.log(this.state.city)
-    );
+      })
   };
 
   findLocation = routerParams => {
@@ -75,6 +90,35 @@ class App extends React.Component {
       return attraction.url_name === routerParams.match.params.name;
     });
   };
+
+  // TAKEN FROM LECTURE
+  login = (username, password) => {
+    console.log('in the app login', username, password)
+    api.login(username, password).then(j => {
+      if(j.error) {
+        alert(j.error)
+      } else {
+        localStorage.setItem('token', j.token)
+        this.setState({
+          currentUser: j.user,
+          auth: {
+            loggedIn: true,
+            token: j.token
+          }
+        })
+      }
+    })
+  } // ENDS LOGIN
+
+  logout = () => {
+    localStorage.removeItem('token')
+    this.setState({
+      auth: {
+        loggedIn: false,
+        token: undefined
+      }
+    })
+  } // ENDS LOG OUT
 
   render() {
     return (
@@ -103,8 +147,9 @@ class App extends React.Component {
             render={props => (
               <Home
                 {...props}
-                currentUser={this.state.currentUser}
-                setCurrentUser={this.setCurrentUser}
+                loginFn={this.login}
+                logoutFn={this.logout}
+                auth={this.state.auth}
               />
             )}
           />
@@ -146,7 +191,7 @@ class App extends React.Component {
             exact
             path="/welcome"
             render={props => (
-              <Welcome {...props} currentUser={this.state.currentUser} />
+              <Welcome {...props} currentUser={this.state.currentUser}/>
             )}
           />
           <Route

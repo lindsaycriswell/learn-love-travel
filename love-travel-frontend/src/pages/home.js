@@ -13,47 +13,62 @@ class Home extends React.Component {
 
   state = {
     username: '',
+    password: '',
     invalid: '',
     redirect: false
   }
 
-  handleUsername = (event) => {
-    this.setState({
-      username: event.target.value
-    })
+  onInputChange = (e) => {
+   this.setState({
+     [e.target.name]: e.target.value
+   })
   }
 
-  checkUser = (event) => {
-    event.preventDefault()
-    console.log(this.state.username)
-    this.fetchCheckUser(this.state.username)
-  }
+  onFormSubmit = (e) => {
+   e.preventDefault()
+   this.props.loginFn(this.state.username, this.state.password)
+   this.setState({
+     redirect:true
+   })
+ }
 
-  fetchCheckUser = (username) => {
-    fetch('http://localhost:3000/checkuser', {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        username: username
-      })
-    })
-    .then(res => res.json())
-    .then(userJSON => {
-      if (userJSON.message === "Invalid") {
-        this.setState({
-          invalid: userJSON.message
-        })
-      } else {
-        // render the new shit here
-        this.props.setCurrentUser(userJSON)
-        this.setState({
-          redirect: true
-        })
-      }
-    })
-  }
+  // handleUsername = (event) => {
+  //   this.setState({
+  //     username: event.target.value
+  //   })
+  // }
+
+  // checkUser = (event) => {
+  //   event.preventDefault()
+  //   console.log(this.state.username)
+  //   this.fetchCheckUser(this.state.username)
+  // }
+
+  // fetchCheckUser = (username) => {
+  //   fetch('http://localhost:3000/checkuser', {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json"
+  //     },
+  //     body: JSON.stringify({
+  //       username: username
+  //     })
+  //   })
+  //   .then(res => res.json())
+  //   .then(userJSON => {
+  //     if (userJSON.message === "Invalid") {
+  //       this.setState({
+  //         invalid: userJSON.message
+  //       })
+  //     } else {
+  //       // render the new shit here
+  //       this.props.setCurrentUser(userJSON)
+  //       this.setState({
+  //         redirect: true
+  //       })
+  //     }
+  //   })
+  // }
 
 render(){
   let sectionStyle = {
@@ -71,8 +86,10 @@ render(){
       </div>
       <div className="four wide column">
         <h2 className="ui dividing header" style={{color: "#3f2674", marginTop: "20px"}}>Sign In</h2>
-        <form className="ui form" onSubmit={this.checkUser}>
-          <input type="text" name="username" placeholder="Username" onChange={this.handleUsername} value={this.state.username} style={{backgroundColor: "rgba(52, 52, 52, 0.3)", border:"1px solid #3f2674"}}/>
+        <form className="ui form" onSubmit={this.onFormSubmit}>
+          <input type="text" name="username" placeholder="Username" onChange={this.onInputChange} value={this.state.username} style={{backgroundColor: "rgba(52, 52, 52, 0.3)", border:"1px solid #3f2674"}}/>
+          <input type="password" name="password" placeholder="Password" style={{backgroundColor: "rgba(52, 52, 52, 0.3)", border:"1px solid #3f2674"}}
+          onChange={this.onInputChange} value={this.state.password}/>
           <button className="ui submit button">Submit</button>
         </form>
         {this.state.invalid ?
