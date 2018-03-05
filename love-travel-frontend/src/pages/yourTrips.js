@@ -1,11 +1,14 @@
 
-// React stuff needed
-import React from 'react'
-let moment = require('moment');
 
-//components
+
+// react stuff needed
+import React from 'react'
+
+// components
 import EditTrip from './editTrip'
 
+// this needs to go under the components
+let moment = require('moment');
 
 class YourTrips extends React.Component  {
   state = {
@@ -39,7 +42,7 @@ class YourTrips extends React.Component  {
       <div className="ui items">
           {this.state.yourTrips.length > 0 ? this.state.yourTrips.map(trip =>
             <div key={trip.id} className="item">
-              <div className="content">
+              <div key={trip.id} className="content">
                 <div className="ui header">{trip.location.name}</div>
                 <div className="description">{moment(trip.start_date).format("MMM Do")} <i className="arrow right icon"></i> {moment(trip.end_date).format("MMM Do YY")}</div>
                 <div>{trip.notes.length > 0 ? trip.notes : "Add Some Notes!" }</div>
@@ -49,7 +52,7 @@ class YourTrips extends React.Component  {
           </div>
           </div>
           <div className="nine wide column">
-          {this.state.editTrip ? <EditTrip data={this.state.editTrip} />: null }</div>
+          {this.state.editTrip ? <EditTrip user={this.props.currentUser.id} data={this.state.editTrip} />: null }</div>
       </div>
     )}
 
