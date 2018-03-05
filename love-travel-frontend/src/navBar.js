@@ -12,13 +12,16 @@ const NavBar = props => {
   return (
     <div className="ui blue inverted menu" style={{marginBottom: "0px"}}>
       <div className="header item">
-        Learn. Love. Travel. 
+        Learn. Love. Travel.
       </div>
       <div className= "item">
       <Link to={`/about`} >About Us</Link>
       </div>
       <div className="item">
       <Link to={`/map`}>Map</Link>
+      </div>
+      <div className="item">
+      <Link to={`/yourTrips`}>Your Trips</Link>
       </div>
       <div className="right menu">
         <div className="item">
