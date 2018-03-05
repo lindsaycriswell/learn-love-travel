@@ -4,12 +4,12 @@ import PhotoList from "./PhotoList";
 import Photo from "./Photo";
 import Unsplash from "unsplash-js";
 
-// const unsplash = new Unsplash({
-//   applicationId:
-//     "129e1c37805baaa3c936aaea1cd984828281182dc4440f5e8406b421c0b6b0e4",
-//   secret: "8f957a7929701b86d8365960b8830ded0cca2d0fcc8f7c0a3782f10a3a80b9b2",
-//   callbackUrl: "urn:ietf:wg:oauth:2.0:oob"
-// });
+const unsplash = new Unsplash({
+  applicationId:
+    "129e1c37805baaa3c936aaea1cd984828281182dc4440f5e8406b421c0b6b0e4",
+  secret: "8f957a7929701b86d8365960b8830ded0cca2d0fcc8f7c0a3782f10a3a80b9b2",
+  callbackUrl: "urn:ietf:wg:oauth:2.0:oob"
+});
 
 class Location extends React.Component {
   state = {
