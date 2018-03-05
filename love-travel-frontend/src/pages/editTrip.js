@@ -46,6 +46,8 @@ class EditTrip extends React.Component {
         notes: notes,
       })
     })
+    .then(res => res.json())
+    .then(json => this.props.resetState())
   }
 
   render(){
@@ -63,7 +65,8 @@ class EditTrip extends React.Component {
         <form className="ui form" onSubmit={this.handleEdit}>
           <textarea placeholder="Trip Notes" value={this.state.notes} onInput={this.handleNotes}></textarea>
           <button className="ui submit button">Edit Trip</button>
-        </form>
+        </form><br/>
+        <a>Cancel Trip</a>
       </div>
     )
   }

@@ -17,6 +17,10 @@ class YourTrips extends React.Component  {
   }
 
   componentDidMount() {
+    this.renderTrips()
+  }
+
+  renderTrips = () => {
     fetch(`http://localhost:3000/users/${this.props.currentUser.id}/yourtrips`)
     .then(res => res.json())
     .then(trips => {
@@ -30,6 +34,13 @@ class YourTrips extends React.Component  {
     this.setState({
       editTrip: trip
     }, () => console.log(this.state.editTrip))
+  }
+
+  refreshEdit = () => {
+    this.setState({
+      editTrip: ''
+    })
+    this.renderTrips()
   }
 
   render() {
@@ -51,8 +62,11 @@ class YourTrips extends React.Component  {
             </div>) : <div className="ui header" style={{paddingTop: "40px"}}> No Trips Yet! </div> }
           </div>
           </div>
-          <div className="nine wide column">
-          {this.state.editTrip ? <EditTrip user={this.props.currentUser} data={this.state.editTrip} />: null }</div>
+          <div className="eight wide column">
+          {this.state.editTrip ? <EditTrip
+            resetState={this.refreshEdit}
+             user={this.props.currentUser} data={this.state.editTrip} />: null }</div>
+           <div className="one wide column"></div>
       </div>
     )}
 
