@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
 
+  resources :comments
   resources :users do
     post '/maketrip' => 'trips#create'
     patch '/trips' => 'trips#update'
@@ -10,6 +11,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :locations, only: [:index, :show]
       resources :attractions, only: [:index, :show]
+      resources :comments
     end
   end
 

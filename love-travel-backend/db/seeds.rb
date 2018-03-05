@@ -83,5 +83,17 @@ def create_attractions
   end
 end
 
-
 create_attractions
+
+User.create(username: "DevilDrew", password_digest: "chipotle7", motto: "Not today, Satan!", bio: "Shady Reviewer")
+
+Comment.create(content: "NYC Review", user_id: 1, location_id: 1)
+Comment.create(content: "LA Review", user_id: 1, location_id: 2)
+Comment.create(content: "SF Review", user_id: 1, location_id: 3)
+Comment.create(content: "London Review", user_id: 1, location_id: 4)
+Comment.create(content: "Paris Review", user_id: 1, location_id: 5)
+Comment.create(content: "Buenos Aires Review", user_id: 1, location_id: 6)
+Comment.create(content: "Tokyo Review", user_id: 1, location_id: 7)
+Comment.create(content: "Hong Kong Review", user_id: 1, location_id: 8)
+Comment.create(content: "Rome Review", user_id: 1, location_id: 9)
+Comment.create(content: "Sydney Review", user_id: 1, location_id: 10)
