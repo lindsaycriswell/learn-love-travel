@@ -4,9 +4,7 @@ class UsersController < ApplicationController
   # skip_before_action :require_login, only: [:new, :create, :show]
 
   def make_trip
-    # byebug
     @user_trip = UserTrip.create(start_date: params["start_date"], end_date: params["end_date"], location_id: params["location_id"], notes: params["notes"], user_id: params["user_id"])
-    byebug
     if @user_trip
       render json: @user_trip
     end

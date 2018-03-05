@@ -19,7 +19,6 @@ state = {
 
 makeTrip = (event) => {
   event.preventDefault()
-  console.log(this.props.currentCity)
   this.postTrip(this.state.startDate, this.state.endDate, this.props.currentCity, this.props.currentUser, this.state.notes)
 }
 
