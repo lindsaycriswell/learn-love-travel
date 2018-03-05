@@ -7,6 +7,7 @@ Rails.application.routes.draw do
     get '/yourtrips' => 'trips#index'
   end
 
+
   namespace :api do
     namespace :v1 do
       resources :locations, only: [:index, :show]
