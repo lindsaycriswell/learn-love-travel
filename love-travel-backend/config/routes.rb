@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
   resources :users do
-    post '/make_trip' => 'users#make_trip'
-    patch '/trips' => 'users#update_trip'
-    get '/your_trips' => 'users#your_trips'
+    post '/maketrip' => 'trips#create'
+    patch '/trips' => 'trips#update'
+    get '/yourtrips' => 'trips#index'
   end
 
   namespace :api do
@@ -13,7 +13,7 @@ Rails.application.routes.draw do
     end
   end
 
-  post '/check_user' => 'users#check_user'
+  post '/checkuser' => 'users#check_user'
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html

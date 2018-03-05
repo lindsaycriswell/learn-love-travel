@@ -17,7 +17,7 @@ class YourTrips extends React.Component  {
   }
 
   componentDidMount() {
-    fetch(`http://localhost:3000/users/${this.props.currentUser.id}/your_trips`)
+    fetch(`http://localhost:3000/users/${this.props.currentUser.id}/yourtrips`)
     .then(res => res.json())
     .then(yourTripsJSON => {
       this.setState({

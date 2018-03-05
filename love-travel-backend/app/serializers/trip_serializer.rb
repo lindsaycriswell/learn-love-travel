@@ -1,4 +1,4 @@
-class UserTripSerializer < ActiveModel::Serializer
+class TripSerializer < ActiveModel::Serializer
   attributes :user, :location, :start_date, :end_date, :notes
 
   belongs_to :user

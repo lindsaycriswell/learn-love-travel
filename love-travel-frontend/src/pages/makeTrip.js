@@ -29,7 +29,7 @@ handleNotes = (event) => {
 }
 
 postTrip = (start, end, city, user, notes) => {
-  fetch(`http://localhost:3000/users/${user.id}/make_trip`, {
+  fetch(`http://localhost:3000/users/${user.id}/maketrip`, {
     method: "POST",
     headers: {
        "Content-Type": "application/json"

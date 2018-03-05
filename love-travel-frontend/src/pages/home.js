@@ -30,7 +30,7 @@ class Home extends React.Component {
   }
 
   fetchCheckUser = (username) => {
-    fetch('http://localhost:3000/check_user', {
+    fetch('http://localhost:3000/checkuser', {
       method: "POST",
       headers: {
         "Content-Type": "application/json"
