@@ -5,6 +5,7 @@ import withAuth from '../hoc/withAuth'
 
 import Image from '../images/nyc_skyline.jpg'
 const Welcome = (props) => {
+  console.log('welcome', props)
   let sectionStyle = {
     margin: 0,
     // width: "100vw",

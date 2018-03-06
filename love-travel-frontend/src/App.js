@@ -32,7 +32,6 @@ class App extends React.Component {
     auth: {
       loggedIn: false,
       loggingIn: true,
-      currentUser: ""
     },
     city: "",
     locations: [],
@@ -43,13 +42,20 @@ class App extends React.Component {
   componentDidMount() {
     const token = localStorage.getItem("token");
     if (token) {
-      this.setState({
-        auth: {
-          loggedIn: true,
-          token: token,
-          loggingIn: false
-        }
-      });
+      fetch('http://localhost:3000/currentuser', {
+        method: 'POST',
+        headers: {"Authorization": token}
+      })
+      .then(res => res.json())
+      .then(json => {
+        this.setState({
+          auth: {
+            loggedIn: true,
+            token: token,
+            loggingIn: false
+          }
+        })
+      })
     } else {
       this.setState({
         auth: {
@@ -106,18 +112,16 @@ class App extends React.Component {
         });
       } else {
         localStorage.setItem("token", j.token);
+        console.log(j)
         this.setState(
           {
             currentUser: j.user,
             auth: {
               loggedIn: true,
               token: j.token,
-              loggingIn: false,
-              currentUser: j.user
+              loggingIn: false
             }
-          },
-          () => console.log(this.state.auth.currentUser)
-        );
+          });
       }
     });
   }; // ENDS LOGIN

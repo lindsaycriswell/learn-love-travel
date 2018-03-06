@@ -14,14 +14,22 @@ class UsersController < ApplicationController
     end
   end
 
-  def check_user
-    @user = User.find_by(username: params[:username])
-    if @user
-      render json: @user
+  def current
+    if !current_user.present?
+      render json: {error: "No user id present"}
     else
-      render json: {message:"Invalid"}
+      render json: current_user
     end
   end
+
+  # def check_user
+  #   @user = User.find_by(username: params[:username])
+  #   if @user
+  #     render json: @user
+  #   else
+  #     render json: {message:"Invalid"}
+  #   end
+  # end
 
   def index
     users = User.all
