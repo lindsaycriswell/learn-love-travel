@@ -22,7 +22,7 @@ import MakeTrip from "./pages/makeTrip";
 import Location from "./Location";
 import YourTrips from "./pages/yourTrips";
 import AttractionDetail from "./AttractionDetail";
-import UserAccount from './pages/userAccount'
+import UserAccount from "./pages/userAccount";
 // import AttractionList from "./attractionList";
 
 // this one needs to be on the bottom
@@ -83,10 +83,13 @@ class App extends React.Component {
   };
 
   findLocation = routerParams => {
-    console.log(routerParams);
     return this.state.locations.find(function(location) {
       return location.url_name === routerParams.match.params.name;
     });
+  };
+
+  findLocationOnRefresh = loc => {
+    console.log("???");
   };
 
   findAttraction = routerParams => {
@@ -126,7 +129,7 @@ class App extends React.Component {
         loggedIn: false,
         token: undefined
       }
-    })
+    });
   }; // ENDS LOG OUT
 
   render() {
@@ -142,6 +145,7 @@ class App extends React.Component {
                   location={this.findLocation(routerParams)}
                   findLocation={this.findLocation}
                   auth={this.state.auth}
+                  findLocationOnRefresh={this.findLocationOnRefresh}
                   url={routerParams.match}
                 />
               );
