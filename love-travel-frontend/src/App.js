@@ -84,10 +84,6 @@ class App extends React.Component {
     });
   };
 
-  findLocationOnRefresh = loc => {
-    console.log("???");
-  };
-
   findAttraction = routerParams => {
     return this.state.attractions.find(function(attraction) {
       return attraction.url_name === routerParams.match.params.name;
@@ -136,7 +132,6 @@ class App extends React.Component {
                 <Location
                   location={this.findLocation(routerParams)}
                   findLocation={this.findLocation}
-                  findLocationOnRefresh={this.findLocationOnRefresh}
                   url={routerParams.match}
                 />
               );

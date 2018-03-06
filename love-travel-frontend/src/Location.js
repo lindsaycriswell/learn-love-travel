@@ -27,17 +27,19 @@ class Location extends React.Component {
           photos: json.results
         })
       );
-
-    // this.setState({
-    //   url_path: [this.props.location.url_name]
-    // });
-    //
-    // console.log(this.props.findLocationOnRefresh);
+    if (this.props.location.url_name.length > 0) {
+      this.setState({
+        url_path: [this.props.location.url_name]
+      });
+    }
+    // else {
+    //   this.findLocation(this.props.url.params.name);
+    // }
   }
 
   render() {
     // console.log(this.props.url.params.name);
-    // console.log(this.state.url_path.length);
+    // console.log(this.state.url_path);
 
     return (
       <div>
