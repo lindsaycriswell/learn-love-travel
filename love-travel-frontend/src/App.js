@@ -30,7 +30,8 @@ import UserAccount from "./pages/userAccount";
 class App extends React.Component {
   state = {
     auth: {
-      loggedIn: false
+      loggedIn: false,
+      loggingIn: true
     },
     city: "",
     locations: [],
@@ -44,9 +45,17 @@ class App extends React.Component {
       this.setState({
         auth: {
           loggedIn: true,
-          token: token
+          token: token,
+          loggingIn: false
         }
-      });
+      })
+    } else {
+      this.setState({
+        auth: {
+          loggedIn: false,
+          loggingIn: false
+        }
+      })
     }
 
     fetch("http://localhost:3000/api/v1/locations")
@@ -66,12 +75,7 @@ class App extends React.Component {
       );
   } // ends COMPONENT DID MOUNT
 
-  // setCurrentUser = user => {
-  //   this.setState({
-  //     currentUser: user
-  //   })
-  // };
-
+  // sets what city you're on for the map to load the attractions
   setCity = cityData => {
     this.setState({
       city: cityData
@@ -92,19 +96,23 @@ class App extends React.Component {
 
   // TAKEN FROM LECTURE
   login = (username, password) => {
-    console.log("in the app login", username, password);
     api.login(username, password).then(j => {
       if (j.error) {
-        alert(j.error);
+        alert(j.error)
+        this.setState({
+          loggedIn: false,
+          loggingIn: false
+        })
       } else {
         localStorage.setItem("token", j.token);
         this.setState({
           currentUser: j.user,
           auth: {
             loggedIn: true,
-            token: j.token
+            token: j.token,
+            loggingIn: false
           }
-        });
+        })
       }
     });
   }; // ENDS LOGIN
@@ -123,7 +131,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <NavBar logOut={this.logout} currentUser={this.state.currentUser} />
+        <NavBar logOut={this.logout} currentUser={this.state.currentUser} auth={this.state.auth}/>
         <Switch>
           <Route
             path="/locations/:name"
@@ -132,6 +140,11 @@ class App extends React.Component {
                 <Location
                   location={this.findLocation(routerParams)}
                   findLocation={this.findLocation}
+<<<<<<< HEAD
+=======
+                  auth={this.state.auth}
+                  findLocationOnRefresh={this.findLocationOnRefresh}
+>>>>>>> f508fccb5f9662b7344ea30869c624354006bf0f
                   url={routerParams.match}
                 />
               );
@@ -142,6 +155,7 @@ class App extends React.Component {
             render={routerParams => {
               return (
                 <AttractionDetail
+                  auth={this.state.auth}
                   attraction={this.findAttraction(routerParams)}
                 />
               );
@@ -150,7 +164,11 @@ class App extends React.Component {
           <Route
             path="/users/:id"
             render={props => (
-              <UserAccount {...props} currentUser={this.state.currentUser} />
+              <UserAccount
+                {...props}
+                auth={this.state.auth}
+                currentUser={this.state.currentUser}
+              />
             )}
           />
           <Route
@@ -171,6 +189,7 @@ class App extends React.Component {
             render={props => (
               <MapContainer
                 {...props}
+                auth={this.state.auth}
                 setCity={this.setCity}
                 currentUser={this.state.currentUser}
                 locations={this.state.locations}
@@ -184,6 +203,7 @@ class App extends React.Component {
             render={props => (
               <SignUp
                 {...props}
+                auth={this.state.auth}
                 currentUser={this.state.currentUser}
                 setCurrentUser={this.setCurrentUser}
               />
@@ -195,6 +215,7 @@ class App extends React.Component {
             render={props => (
               <FirstSignUpPage
                 {...props}
+                auth={this.state.auth}
                 currentUser={this.state.currentUser}
               />
             )}
@@ -203,7 +224,7 @@ class App extends React.Component {
             exact
             path="/welcome"
             render={props => (
-              <Welcome {...props} currentUser={this.state.currentUser} />
+              <Welcome {...props} auth={this.state.auth} currentUser={this.state.currentUser} />
             )}
           />
           <Route
@@ -212,6 +233,7 @@ class App extends React.Component {
             render={props => (
               <MakeTrip
                 {...props}
+                auth={this.state.auth}
                 currentUser={this.state.currentUser}
                 currentCity={this.state.city}
               />
@@ -221,7 +243,7 @@ class App extends React.Component {
             exact
             path="/yourTrips"
             render={props => (
-              <YourTrips {...props} currentUser={this.state.currentUser} />
+              <YourTrips {...props} auth={this.state.auth} currentUser={this.state.currentUser} />
             )}
           />
         </Switch>

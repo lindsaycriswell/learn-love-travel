@@ -4,6 +4,8 @@ import PhotoList from "./PhotoList";
 import Photo from "./Photo";
 import CommentContainer from "./CommentContainer";
 import Unsplash from "unsplash-js";
+// import withAuth from '../hoc/withAuth'
+
 
 const unsplash = new Unsplash({
   applicationId:
@@ -38,6 +40,7 @@ class Location extends React.Component {
   }
 
   render() {
+    // console.log(routerParams);
     // console.log(this.props.url.params.name);
     // console.log(this.state.url_path);
 
@@ -61,7 +64,7 @@ class Location extends React.Component {
               >
                 <h2 className="ui blue header">Popular Attractions</h2>
                 {this.props.location.attractions.map(attraction => (
-                  <Attraction attraction={attraction} key={attraction.id} />
+                  <Attraction auth={this.props.auth} attraction={attraction} key={attraction.id} />
                 ))}
               </div>
             ) : null}

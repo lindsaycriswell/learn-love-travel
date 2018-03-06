@@ -4,6 +4,7 @@ import React from "react";
 import { Link } from 'react-router-dom'
 import { Redirect } from 'react-router'
 import SignUp from './pages/signUp'
+
 // REACT COMPONENTS
 // import About from './pages/about'
 // import home from './pages/home'

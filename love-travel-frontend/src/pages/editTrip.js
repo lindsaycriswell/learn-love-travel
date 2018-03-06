@@ -2,6 +2,7 @@
 // react stuff
 import React from 'react'
 import { DateRangePicker } from 'react-dates';
+import withAuth from '../hoc/withAuth'
 
 // require this after components
 let moment = require('moment');
