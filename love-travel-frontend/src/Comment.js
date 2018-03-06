@@ -16,6 +16,9 @@ class Comment extends React.Component {
   }
 
   render() {
+    console.log(this.props.currentUser.id);
+    console.log(this.state.reviewUser.id);
+
     return (
       <div className="ui relaxed divided list">
         <div className="item">
@@ -26,6 +29,12 @@ class Comment extends React.Component {
             <div className="description" style={{ textAlign: "left" }}>
               {this.props.comment.content}
             </div>
+            {this.props.currentUser.id === this.state.reviewUser.id ? (
+              <div>
+                <button class="mini ui button">Edit Comment</button>
+                <button class="mini ui button">Delete Comment</button>
+              </div>
+            ) : null}
           </div>
         </div>
       </div>

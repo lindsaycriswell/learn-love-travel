@@ -33,6 +33,7 @@ class Location extends React.Component {
     if (this.props.location) {
       // Comment out if over API limit
       this.state.photos.length ? null : this.getPhotos();
+
       return (
         <div>
           <div />
@@ -66,7 +67,7 @@ class Location extends React.Component {
             </div>
             <div className="two wide column" />
             <div className="five wide column">
-              <div className="ui relaxed divided list">
+              <div>
                 {this.props.location.comments.length > 0 ? (
                   <div>
                     <h2 className="ui blue header">

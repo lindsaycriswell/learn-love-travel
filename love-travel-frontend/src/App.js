@@ -32,7 +32,7 @@ class App extends React.Component {
     auth: {
       loggedIn: false,
       loggingIn: true,
-      currentUser: ''
+      currentUser: ""
     },
     city: "",
     locations: [],
@@ -106,15 +106,18 @@ class App extends React.Component {
         });
       } else {
         localStorage.setItem("token", j.token);
-        this.setState({
-          currentUser: j.user,
-          auth: {
-            loggedIn: true,
-            token: j.token,
-            loggingIn: false,
-            currentUser: j.user
-          }
-        }, () => console.log(this.state.auth.currentUser));
+        this.setState(
+          {
+            currentUser: j.user,
+            auth: {
+              loggedIn: true,
+              token: j.token,
+              loggingIn: false,
+              currentUser: j.user
+            }
+          },
+          () => console.log(this.state.auth.currentUser)
+        );
       }
     });
   }; // ENDS LOGIN

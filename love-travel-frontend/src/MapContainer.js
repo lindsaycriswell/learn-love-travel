@@ -2,8 +2,8 @@
 
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import React from "react";
-import { Link } from "react-router-dom";
-import withAuth from "./hoc/withAuth";
+// import { Link } from "react-router-dom";
+// import withAuth from "./hoc/withAuth";
 
 // other components
 

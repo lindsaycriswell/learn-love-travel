@@ -48,11 +48,13 @@ class CommentContainer extends React.Component {
   };
 
   render() {
-    console.log(this.state.user_id);
     return (
       <div>
         <div>
-          <CommentList comments={this.state.comments} />
+          <CommentList
+            comments={this.state.comments}
+            currentUser={this.props.currentUser}
+          />
         </div>
         <div>
           <CommentForm
