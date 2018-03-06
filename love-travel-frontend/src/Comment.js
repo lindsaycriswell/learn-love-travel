@@ -17,8 +17,7 @@ class Comment extends React.Component {
 
   render() {
     return (
-      <div className="ui relaxed divided list">
-        <div className="item">
+        <div className="ui item">
           <div className="content" style={{ margin: "5px" }}>
             <a className="header" style={{ textAlign: "left" }}>
               {this.state.reviewUser.username}
@@ -28,7 +27,6 @@ class Comment extends React.Component {
             </div>
           </div>
         </div>
-      </div>
     );
   }
 }

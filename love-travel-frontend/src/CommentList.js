@@ -3,9 +3,11 @@ import Comment from "./Comment";
 
 const CommentList = props => {
   return (
-    <div>
+    <div className="ui relaxed divided list">
       {props.comments.map(comment => (
-        <Comment comment={comment} key={comment.id} />
+        <div className="ui item">
+          <Comment comment={comment} key={comment.id} />
+        </div>
       ))}
     </div>
   );
