@@ -145,6 +145,7 @@ class App extends React.Component {
                   location={this.findLocation(routerParams)}
                   findLocation={this.findLocation}
                   auth={this.state.auth}
+                  currentUser={this.state.currentUser}
                   url={routerParams.match}
                 />
               );
