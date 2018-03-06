@@ -28,7 +28,13 @@ const NavBar = props => {
         <div className="ui item">
           <i className="suitcase icon"></i>
         </div>
-        {props.currentUser ? <a onClick={props.logOut} className="ui item">Log Out</a> : <Link to={`/signUp`} className="ui item">Sign Up</Link>}
+        {props.currentUser ?
+          <React.Fragment>
+          <Link to={`/users/${props.currentUser.id}`} className="ui item">{props.currentUser.username}</Link>
+          <a onClick={props.logOut} className="ui item">Log Out</a>
+          </React.Fragment>
+          : <Link to={`/signUp`} className="ui item">Sign Up</Link>
+        }
       </div>
     </div>
   );

@@ -50,6 +50,14 @@ class EditTrip extends React.Component {
     .then(json => this.props.resetState())
   }
 
+  deleteTrip = (userID, tripID) => {
+    fetch(`http://localhost:3000/users/${userID}/trips/${tripID}`, {
+      method: "DELETE"
+    })
+    .then(res => res.json())
+    .then(json => this.props.resetState())
+  }
+
   render(){
     return(
       <div>
@@ -66,7 +74,7 @@ class EditTrip extends React.Component {
           <textarea placeholder="Trip Notes" value={this.state.notes} onInput={this.handleNotes}></textarea>
           <button className="ui submit button">Edit Trip</button>
         </form><br/>
-        <a>Cancel Trip</a>
+      <a onClick={()=> this.deleteTrip(this.props.user.id, this.props.data.id)}>Cancel Trip</a>
       </div>
     )
   }
