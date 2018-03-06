@@ -14,8 +14,8 @@ const unsplash = new Unsplash({
 
 class Location extends React.Component {
   state = {
-    photos: []
-    // url_path: [this.props.location.url_name]
+    photos: [],
+    url_path: [this.props.location.url_name]
   };
 
   componentDidMount() {
@@ -30,7 +30,7 @@ class Location extends React.Component {
   }
 
   render() {
-    console.log(routerParams);
+    // console.log(routerParams);
     // console.log(this.props.url.params.name);
     // console.log(this.state.url_path);
     // console.log(this.props.findLocation);
