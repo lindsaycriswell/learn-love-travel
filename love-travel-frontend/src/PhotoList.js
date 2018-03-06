@@ -23,19 +23,3 @@ const PhotoList = props => {
 };
 
 export default PhotoList;
-
-// json.results.sort(function(a, b) {
-//   var heightA = a.height;
-//   var heightB = b.height;
-//   if (heightA < heightB) {
-//     return -1;
-//   }
-//   if (heightA > heightB) {
-//     return 1;
-//   }
-//   return 0;
-// })
-// ),
-// () => {
-// console.log(json);
-// };
