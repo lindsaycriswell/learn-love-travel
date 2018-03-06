@@ -75,13 +75,7 @@ export class MapContainer extends React.Component {
               visible={this.state.showingInfoWindow}
             >
               <div>
-                <a
-                  className="ui blue header"
-                  style={{ textDecoration: "underline" }}
-                  href={"locations/" + this.state.selectedPlace.url_name}
-                >
-                  {this.state.selectedPlace.name}
-                </a>
+                <h2>{this.state.selectedPlace.name}</h2>
               </div>
             </InfoWindow>
           </Map>
