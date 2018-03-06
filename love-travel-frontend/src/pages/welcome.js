@@ -5,7 +5,7 @@ import withAuth from '../hoc/withAuth'
 
 import Image from '../images/nyc_skyline.jpg'
 const Welcome = (props) => {
-  console.log('welcome', props)
+
   let sectionStyle = {
     margin: 0,
     // width: "100vw",
@@ -13,14 +13,20 @@ const Welcome = (props) => {
     backgroundSize: "cover",
     backgroundImage: `url(${Image})`
   }
+
+  let user = JSON.parse(localStorage.getItem("user"))
+
   return(
     <div style={sectionStyle} className="ui grid">
       <div className="two wide column"></div>
       <div className="eight wide column" style={{textAlign: "left"}}>
-      <h1>Welcome {props.currentUser.username}!</h1>
+      <h1>Welcome {user.username}!</h1>
       </div>
     </div>
   )
 }
+
+// let user = JSON.parse(localStorage.getItem("user"))
+// console.log(user)
 
 export default withAuth(Welcome)

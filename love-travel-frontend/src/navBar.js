@@ -11,6 +11,9 @@ import SignUp from './pages/signUp'
 // import
 
 const NavBar = props => {
+  
+  let user = JSON.parse(localStorage.getItem("user"))
+
   return (
     <div className="ui blue inverted menu" style={{marginBottom: "0px"}}>
       <div className="header item">
@@ -19,7 +22,7 @@ const NavBar = props => {
       <div className= "ui item">
       <Link to={`/about`} >About Us</Link>
       </div>
-      {props.currentUser ?
+      {user ?
         <React.Fragment>
           <Link to={`/map`} className="ui item" >Map</Link>
           <Link to={`/yourTrips`} className="ui item" >Your Trips</Link>
@@ -29,9 +32,10 @@ const NavBar = props => {
         <div className="ui item">
           <i className="suitcase icon"></i>
         </div>
-        {props.currentUser ?
+
+        {user ?
           <React.Fragment>
-          <Link to={`/users/${props.currentUser.id}`} className="ui item">{props.currentUser.username}</Link>
+          <Link to={`/users/${props.currentUser.id}`} className="ui item">{user.username}</Link>
           <a onClick={props.logOut} className="ui item">Log Out</a>
           </React.Fragment>
           : <Link to={`/signUp`} className="ui item">Sign Up</Link>

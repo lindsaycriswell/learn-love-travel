@@ -112,7 +112,7 @@ class App extends React.Component {
         });
       } else {
         localStorage.setItem("token", j.token);
-        console.log(j)
+        localStorage.setItem( 'user', JSON.stringify( j.user ) )
         this.setState(
           {
             currentUser: j.user,
@@ -128,6 +128,7 @@ class App extends React.Component {
 
   logout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("user");
     this.setState({
       currentUser: "",
       auth: {
