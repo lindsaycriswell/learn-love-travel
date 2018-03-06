@@ -3,7 +3,7 @@
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import React from "react";
 import { Link } from "react-router-dom";
-import withAuth from './hoc/withAuth'
+import withAuth from "./hoc/withAuth";
 
 // other components
 
@@ -43,6 +43,7 @@ export class MapContainer extends React.Component {
   // <div style={{ padding: "10px" }}>
 
   render() {
+    console.log(this.state.selectedPlace.url_name);
     return (
       <div style={{ height: "100vh", paddingLeft: "10px" }} className="ui grid">
         <div className="ten wide column">
@@ -75,7 +76,13 @@ export class MapContainer extends React.Component {
               visible={this.state.showingInfoWindow}
             >
               <div>
-                <h1>{this.state.selectedPlace.name}</h1>
+                <a
+                  className="ui blue header"
+                  style={{ textDecoration: "underline" }}
+                  href={"locations/" + this.state.selectedPlace.url_name}
+                >
+                  {this.state.selectedPlace.name}
+                </a>
               </div>
             </InfoWindow>
           </Map>

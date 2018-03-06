@@ -1,7 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import withAuth from './hoc/withAuth'
-
+import withAuth from "./hoc/withAuth";
 
 const Attraction = props => {
   return (
@@ -29,4 +28,4 @@ const Attraction = props => {
   );
 };
 
-export default withAuth(Attraction)
+export default withAuth(Attraction);
