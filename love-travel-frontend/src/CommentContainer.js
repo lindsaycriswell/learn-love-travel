@@ -5,7 +5,7 @@ import CommentForm from "./CommentForm";
 class CommentContainer extends React.Component {
   state = {
     comments: [],
-    user_id: 1,
+    user_id: "",
     location_id: null,
     content: ""
   };
@@ -13,7 +13,8 @@ class CommentContainer extends React.Component {
   componentDidMount() {
     this.setState({
       comments: [...this.props.comments],
-      location_id: this.props.location.id
+      location_id: this.props.location.id,
+      user_id: this.props.currentUser.id
     });
   }
 
@@ -47,6 +48,7 @@ class CommentContainer extends React.Component {
   };
 
   render() {
+    console.log(this.state.user_id);
     return (
       <div>
         <div>

@@ -75,6 +75,7 @@ class Location extends React.Component {
                     <CommentContainer
                       comments={this.props.location.comments}
                       location={this.props.location}
+                      currentUser={this.props.currentUser}
                     />
                   </div>
                 ) : (
