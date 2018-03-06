@@ -48,14 +48,14 @@ class App extends React.Component {
           token: token,
           loggingIn: false
         }
-      })
+      });
     } else {
       this.setState({
         auth: {
           loggedIn: false,
           loggingIn: false
         }
-      })
+      });
     }
 
     fetch("http://localhost:3000/api/v1/locations")
@@ -98,11 +98,11 @@ class App extends React.Component {
   login = (username, password) => {
     api.login(username, password).then(j => {
       if (j.error) {
-        alert(j.error)
+        alert(j.error);
         this.setState({
           loggedIn: false,
           loggingIn: false
-        })
+        });
       } else {
         localStorage.setItem("token", j.token);
         this.setState({
@@ -112,7 +112,7 @@ class App extends React.Component {
             token: j.token,
             loggingIn: false
           }
-        })
+        });
       }
     });
   }; // ENDS LOGIN
@@ -131,7 +131,11 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <NavBar logOut={this.logout} currentUser={this.state.currentUser} auth={this.state.auth}/>
+        <NavBar
+          logOut={this.logout}
+          currentUser={this.state.currentUser}
+          auth={this.state.auth}
+        />
         <Switch>
           <Route
             path="/locations/:name"
@@ -140,11 +144,8 @@ class App extends React.Component {
                 <Location
                   location={this.findLocation(routerParams)}
                   findLocation={this.findLocation}
-<<<<<<< HEAD
-=======
                   auth={this.state.auth}
                   findLocationOnRefresh={this.findLocationOnRefresh}
->>>>>>> f508fccb5f9662b7344ea30869c624354006bf0f
                   url={routerParams.match}
                 />
               );
@@ -224,7 +225,11 @@ class App extends React.Component {
             exact
             path="/welcome"
             render={props => (
-              <Welcome {...props} auth={this.state.auth} currentUser={this.state.currentUser} />
+              <Welcome
+                {...props}
+                auth={this.state.auth}
+                currentUser={this.state.currentUser}
+              />
             )}
           />
           <Route
@@ -243,7 +248,11 @@ class App extends React.Component {
             exact
             path="/yourTrips"
             render={props => (
-              <YourTrips {...props} auth={this.state.auth} currentUser={this.state.currentUser} />
+              <YourTrips
+                {...props}
+                auth={this.state.auth}
+                currentUser={this.state.currentUser}
+              />
             )}
           />
         </Switch>
