@@ -22,7 +22,7 @@ import MakeTrip from "./pages/makeTrip";
 import Location from "./Location";
 import YourTrips from "./pages/yourTrips";
 import AttractionDetail from "./AttractionDetail";
-import UserAccount from './pages/userAccount'
+import UserAccount from "./pages/userAccount";
 // import AttractionList from "./attractionList";
 
 // this one needs to be on the bottom
@@ -79,10 +79,13 @@ class App extends React.Component {
   };
 
   findLocation = routerParams => {
-    console.log(routerParams);
     return this.state.locations.find(function(location) {
       return location.url_name === routerParams.match.params.name;
     });
+  };
+
+  findLocationOnRefresh = loc => {
+    console.log("???");
   };
 
   findAttraction = routerParams => {
@@ -118,7 +121,7 @@ class App extends React.Component {
         loggedIn: false,
         token: undefined
       }
-    })
+    });
   }; // ENDS LOG OUT
 
   render() {
@@ -133,6 +136,7 @@ class App extends React.Component {
                 <Location
                   location={this.findLocation(routerParams)}
                   findLocation={this.findLocation}
+                  findLocationOnRefresh={this.findLocationOnRefresh}
                   url={routerParams.match}
                 />
               );
@@ -151,10 +155,7 @@ class App extends React.Component {
           <Route
             path="/users/:id"
             render={props => (
-              <UserAccount
-                {...props}
-                currentUser={this.state.currentUser}
-              />
+              <UserAccount {...props} currentUser={this.state.currentUser} />
             )}
           />
           <Route
