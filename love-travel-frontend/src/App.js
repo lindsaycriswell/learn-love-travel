@@ -117,7 +117,7 @@ class App extends React.Component {
         loggedIn: false,
         token: undefined
       }
-    });
+    })
   }; // ENDS LOG OUT
 
   render() {

@@ -19,4 +19,10 @@ class TripsController < ApplicationController
     render json: @trip
   end
 
+  def destroy
+    @trip = Trip.find_by(id: params[:trip_id])
+    @trip.destroy
+    render json: {message:"Zap! Trip deleted"}, status: 200
+  end
+
 end
