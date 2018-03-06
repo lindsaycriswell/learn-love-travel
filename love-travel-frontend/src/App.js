@@ -22,6 +22,7 @@ import MakeTrip from "./pages/makeTrip";
 import Location from "./Location";
 import YourTrips from "./pages/yourTrips";
 import AttractionDetail from "./AttractionDetail";
+import UserAccount from './pages/userAccount'
 // import AttractionList from "./attractionList";
 
 // this one needs to be on the bottom
@@ -144,6 +145,15 @@ class App extends React.Component {
                 />
               );
             }}
+          />
+          <Route
+            path="/users/:id"
+            render={props => (
+              <UserAccount
+                {...props}
+                currentUser={this.state.currentUser}
+              />
+            )}
           />
           <Route
             exact

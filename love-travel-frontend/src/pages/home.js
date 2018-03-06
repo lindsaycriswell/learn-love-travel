@@ -32,43 +32,6 @@ class Home extends React.Component {
    })
  }
 
-  // handleUsername = (event) => {
-  //   this.setState({
-  //     username: event.target.value
-  //   })
-  // }
-
-  // checkUser = (event) => {
-  //   event.preventDefault()
-  //   console.log(this.state.username)
-  //   this.fetchCheckUser(this.state.username)
-  // }
-
-  // fetchCheckUser = (username) => {
-  //   fetch('http://localhost:3000/checkuser', {
-  //     method: "POST",
-  //     headers: {
-  //       "Content-Type": "application/json"
-  //     },
-  //     body: JSON.stringify({
-  //       username: username
-  //     })
-  //   })
-  //   .then(res => res.json())
-  //   .then(userJSON => {
-  //     if (userJSON.message === "Invalid") {
-  //       this.setState({
-  //         invalid: userJSON.message
-  //       })
-  //     } else {
-  //       // render the new shit here
-  //       this.props.setCurrentUser(userJSON)
-  //       this.setState({
-  //         redirect: true
-  //       })
-  //     }
-  //   })
-  // }
 
 render(){
   let sectionStyle = {
