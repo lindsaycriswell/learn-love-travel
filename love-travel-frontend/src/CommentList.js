@@ -5,13 +5,15 @@ const CommentList = props => {
   console.log(props);
   console.log(props.currentUser);
   return (
-    <div>
+    <div className="ui relaxed divided list">
       {props.comments.map(comment => (
-        <Comment
-          comment={comment}
-          key={comment.id}
-          currentUser={props.currentUser}
-        />
+        <div className="ui item">
+          <Comment
+            comment={comment}
+            key={comment.id}
+            currentUser={props.currentUser}
+          />
+        </div>
       ))}
     </div>
   );
