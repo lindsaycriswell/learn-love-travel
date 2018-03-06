@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   end
 
   post '/login' => 'users#login'
+  post '/currentuser' => "users#current"
   post '/checkuser' => 'users#check_user'
 
 

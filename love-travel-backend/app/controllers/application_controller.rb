@@ -11,6 +11,15 @@ class ApplicationController < ActionController::API
     end
   end
 
+  # def current
+  #   byebug
+  #   if !current_user.present?
+  #     render json: {error: "No user id present"}
+  #   else
+  #     render json: current_user
+  #   end
+  # end
+
   def current_user
     @current_user ||= User.find_by(id: token_user_id)
   end

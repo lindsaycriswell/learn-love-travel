@@ -87,7 +87,7 @@ class Location extends React.Component {
               </div>
             </div>
             <div className="two wide column" />
-            <PhotoList photos={this.state.photos.slice(1, 8)} />
+            <PhotoList photos={this.state.photos.slice(1, 4)} />
           </div>
         </div>
       );
