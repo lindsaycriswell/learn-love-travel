@@ -43,4 +43,4 @@ class AttractionList extends React.Component {
   }
 }
 
-export default withAuth(AttractionList)
+export default AttractionList

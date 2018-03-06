@@ -1,5 +1,6 @@
 import React from "react";
 import CommentList from "./CommentList";
+import withAuth from './hoc/withAuth'
 
 class CommentContainer extends React.Component {
   state = {
@@ -51,6 +52,7 @@ class CommentContainer extends React.Component {
     return (
       <div>
         <CommentList
+          auth={this.props.auth}
           comments={this.state.comments}
           currentUser={this.props.currentUser}
           location={this.props.location}
@@ -65,4 +67,4 @@ class CommentContainer extends React.Component {
   }
 }
 
-export default CommentContainer;
+export default CommentContainer

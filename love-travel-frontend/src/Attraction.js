@@ -4,8 +4,9 @@ import withAuth from "./hoc/withAuth";
 
 const Attraction = props => {
   return (
-    <div key={props.attraction.id} className="ui item">
+    <div auth={props.auth} key={props.attraction.id} className="ui item">
       <Link
+        auth={props.auth}
         to={`/attractions/${props.attraction.url_name}`}
         key={props.attraction.id}
       >
@@ -28,4 +29,4 @@ const Attraction = props => {
   );
 };
 
-export default withAuth(Attraction);
+export default Attraction

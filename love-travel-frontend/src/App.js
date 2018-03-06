@@ -139,11 +139,14 @@ class App extends React.Component {
   }; // ENDS LOG OUT
 
   render() {
+
+    let user = JSON.parse(localStorage.getItem("user"))
+
     return (
       <div className="App">
         <NavBar
           logOut={this.logout}
-          currentUser={this.state.currentUser}
+          currentUser={user}
           auth={this.state.auth}
         />
         <Switch>
@@ -155,7 +158,7 @@ class App extends React.Component {
                   location={this.findLocation(routerParams)}
                   findLocation={this.findLocation}
                   auth={this.state.auth}
-                  currentUser={this.state.currentUser}
+                  currentUser={user}
                   url={routerParams.match}
                 />
               );
@@ -178,7 +181,7 @@ class App extends React.Component {
               <UserAccount
                 {...props}
                 auth={this.state.auth}
-                currentUser={this.state.currentUser}
+                currentUser={user}
               />
             )}
           />
@@ -202,7 +205,7 @@ class App extends React.Component {
                 {...props}
                 auth={this.state.auth}
                 setCity={this.setCity}
-                currentUser={this.state.currentUser}
+                currentUser={user}
                 locations={this.state.locations}
               />
             )}
@@ -215,7 +218,7 @@ class App extends React.Component {
               <SignUp
                 {...props}
                 auth={this.state.auth}
-                currentUser={this.state.currentUser}
+                currentUser={user}
                 login={this.login}
               />
             )}
@@ -227,7 +230,7 @@ class App extends React.Component {
               <FirstSignUpPage
                 {...props}
                 auth={this.state.auth}
-                currentUser={this.state.currentUser}
+                currentUser={user}
               />
             )}
           />
@@ -238,7 +241,7 @@ class App extends React.Component {
               <Welcome
                 {...props}
                 auth={this.state.auth}
-                currentUser={this.state.currentUser}
+                currentUser={user}
               />
             )}
           />
@@ -249,7 +252,7 @@ class App extends React.Component {
               <MakeTrip
                 {...props}
                 auth={this.state.auth}
-                currentUser={this.state.currentUser}
+                currentUser={user}
                 currentCity={this.state.city}
               />
             )}
@@ -261,7 +264,7 @@ class App extends React.Component {
               <YourTrips
                 {...props}
                 auth={this.state.auth}
-                currentUser={this.state.currentUser}
+                currentUser={user}
               />
             )}
           />

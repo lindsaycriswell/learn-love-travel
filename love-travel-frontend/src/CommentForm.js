@@ -1,4 +1,5 @@
 import React from "react";
+import withAuth from './hoc/withAuth'
 
 const CommentForm = props => {
   console.log(props);
@@ -18,4 +19,4 @@ const CommentForm = props => {
   );
 };
 
-export default CommentForm;
+export default CommentForm

@@ -1,6 +1,7 @@
 import React from "react";
 import Comment from "./Comment";
 import CommentForm from "./CommentForm";
+import withAuth from './hoc/withAuth'
 
 class CommentList extends React.Component {
   render() {
@@ -33,4 +34,4 @@ class CommentList extends React.Component {
   }
 }
 
-export default CommentList;
+export default CommentList
