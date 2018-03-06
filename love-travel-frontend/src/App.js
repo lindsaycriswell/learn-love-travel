@@ -31,7 +31,8 @@ class App extends React.Component {
   state = {
     auth: {
       loggedIn: false,
-      loggingIn: true
+      loggingIn: true,
+      currentUser: ''
     },
     city: "",
     locations: [],
@@ -110,9 +111,10 @@ class App extends React.Component {
           auth: {
             loggedIn: true,
             token: j.token,
-            loggingIn: false
+            loggingIn: false,
+            currentUser: j.user
           }
-        });
+        }, () => console.log(this.state.auth.currentUser));
       }
     });
   }; // ENDS LOGIN
@@ -206,7 +208,7 @@ class App extends React.Component {
                 {...props}
                 auth={this.state.auth}
                 currentUser={this.state.currentUser}
-                setCurrentUser={this.setCurrentUser}
+                login={this.login}
               />
             )}
           />
