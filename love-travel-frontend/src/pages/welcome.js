@@ -1,5 +1,7 @@
 
 import React from 'react'
+import withAuth from '../hoc/withAuth'
+
 
 import Image from '../images/nyc_skyline.jpg'
 const Welcome = (props) => {
@@ -20,4 +22,4 @@ const Welcome = (props) => {
   )
 }
 
-export default Welcome
+export default withAuth(Welcome)

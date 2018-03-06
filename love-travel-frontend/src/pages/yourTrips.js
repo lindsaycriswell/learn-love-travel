@@ -6,6 +6,8 @@ import React from 'react'
 
 // components
 import EditTrip from './editTrip'
+import withAuth from '../hoc/withAuth'
+
 
 // this needs to go under the components
 let moment = require('moment');
@@ -26,7 +28,7 @@ class YourTrips extends React.Component  {
     .then(trips => {
       this.setState({
         yourTrips: trips
-      })
+      }, () => console.log(this.state.yourTrips))
     })
   }
 
@@ -45,7 +47,7 @@ class YourTrips extends React.Component  {
 
   render() {
     //need to sort by most recent first
-  // console.log(this.state.yourTrips)
+  console.log('current props', this.props)
     return(
       <div className="ui grid" style={{paddingTop: "30px"}}>
         <div className="three wide column"></div>
@@ -65,11 +67,11 @@ class YourTrips extends React.Component  {
           <div className="eight wide column">
           {this.state.editTrip ? <EditTrip
             resetState={this.refreshEdit}
-             user={this.props.currentUser} data={this.state.editTrip} />: null }</div>
+             user={this.props.currentUser} data={this.state.editTrip} auth={this.props.auth} />: null }</div>
            <div className="one wide column"></div>
       </div>
     )}
 
 }
 
-export default YourTrips
+export default withAuth(YourTrips)

@@ -1,5 +1,6 @@
 
 import React from 'react'
+import withAuth from '../hoc/withAuth'
 
 
 class UserAccount extends React.Component {
@@ -69,4 +70,4 @@ class UserAccount extends React.Component {
 }
 
 
-export default UserAccount
+export default withAuth(UserAccount)

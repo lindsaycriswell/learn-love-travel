@@ -3,6 +3,7 @@
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import React from "react";
 import { Link } from "react-router-dom";
+import withAuth from './hoc/withAuth'
 
 // other components
 
@@ -83,6 +84,7 @@ export class MapContainer extends React.Component {
         <div className="four wide column">
           {this.state.selectedPlace ? (
             <AttractionList
+              auth={this.props.auth}
               setCity={this.props.setCity}
               cityName={this.state.selectedPlace.name}
               location={this.state.selectedPlace}
