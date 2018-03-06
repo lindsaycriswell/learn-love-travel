@@ -30,10 +30,8 @@ class Location extends React.Component {
   };
 
   render() {
-    // console.log(routerParams);
-    // console.log(this.props.url.params.name);
-    // console.log(this.state.url_path);
     if (this.props.location) {
+      // Comment out if over API limit
       // this.state.photos.length ? null : this.getPhotos();
       return (
         <div>
