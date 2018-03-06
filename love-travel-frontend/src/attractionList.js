@@ -28,7 +28,7 @@ class AttractionList extends React.Component {
           to={`/locations/${this.props.location.url_name}`}
           key={this.props.location.id}
         >
-          <h1>{this.props.cityName}</h1>
+          <h1 style={{ textDecoration: "underline" }}>{this.props.cityName}</h1>
         </Link>
         <button onClick={this.addTrip}>Add To My Trips</button>
         {this.props.location.attractions.map(attraction => (
@@ -42,15 +42,3 @@ class AttractionList extends React.Component {
 }
 
 export default AttractionList;
-
-// <div class="ui items">
-//   <div class="item">
-//     <div class="ui small image">
-//       <img src="/images/wireframe/image.png">
-//     </div>
-//     <div class="content">
-//       <div class="header">
-//         Top Aligned
-//       </div>
-//     </div>
-//   </div>

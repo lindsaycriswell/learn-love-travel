@@ -17,9 +17,17 @@ class Comment extends React.Component {
 
   render() {
     return (
-      <div>
-        <h4>{this.state.reviewUser.username}:</h4>
-        <p>{this.props.comment.content}</p>
+      <div className="ui relaxed divided list">
+        <div className="item">
+          <div className="content" style={{ margin: "5px" }}>
+            <a className="header" style={{ textAlign: "left" }}>
+              {this.state.reviewUser.username}
+            </a>
+            <div className="description" style={{ textAlign: "left" }}>
+              {this.props.comment.content}
+            </div>
+          </div>
+        </div>
       </div>
     );
   }

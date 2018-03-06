@@ -78,6 +78,7 @@ class App extends React.Component {
   };
 
   findLocation = routerParams => {
+    console.log(routerParams);
     return this.state.locations.find(function(location) {
       return location.url_name === routerParams.match.params.name;
     });
@@ -111,7 +112,7 @@ class App extends React.Component {
   logout = () => {
     localStorage.removeItem("token");
     this.setState({
-      currentUser: '',
+      currentUser: "",
       auth: {
         loggedIn: false,
         token: undefined
@@ -122,7 +123,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <NavBar logOut={this.logout} currentUser={this.state.currentUser}/>
+        <NavBar logOut={this.logout} currentUser={this.state.currentUser} />
         <Switch>
           <Route
             path="/locations/:name"
@@ -131,6 +132,7 @@ class App extends React.Component {
                 <Location
                   location={this.findLocation(routerParams)}
                   findLocation={this.findLocation}
+                  url={routerParams.match}
                 />
               );
             }}
@@ -221,9 +223,5 @@ class App extends React.Component {
     );
   }
 }
-
-// <Route exact path='/' component={Home}/>
-// <Route exact path='/signup' data={this.state.currentUser} component={SignUp}/>
-// <Route exact path='/firstSignUpPage' data={this.state.currentUser} component={FirstSignUpPage} />
 
 export default App;

@@ -3,7 +3,9 @@ import React from "react";
 const CommentForm = props => {
   return (
     <div>
-      <h3>Tell us about your trip to {props.location.name}!</h3>;
+      <h3 className="ui blue header">
+        Tell us about your trip to {props.location.name}!
+      </h3>;
       <textarea
         type="text"
         name="content"

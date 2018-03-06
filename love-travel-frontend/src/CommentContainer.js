@@ -49,13 +49,17 @@ class CommentContainer extends React.Component {
   render() {
     return (
       <div>
-        <CommentList comments={this.state.comments} />
-        <CommentForm
-          location={this.props.location}
-          formValue={this.state.content}
-          handleChange={this.handleChange}
-          handleClick={this.handleClick}
-        />
+        <div>
+          <CommentList comments={this.state.comments} />
+        </div>
+        <div>
+          <CommentForm
+            location={this.props.location}
+            formValue={this.state.content}
+            handleChange={this.handleChange}
+            handleClick={this.handleClick}
+          />
+        </div>
       </div>
     );
   }

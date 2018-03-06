@@ -11,15 +11,19 @@ const Attraction = props => {
         <img
           alt={props.attraction.name}
           src={props.attraction.image_url}
-          style={{float:"left"}}
+          style={{ float: "left" }}
           className="ui left aligned mini image"
         />
         <div className="middle aligned content">
-          <div className="header">{props.attraction.name}</div>
+          <div
+            className="header"
+            style={{ color: "RGB(0, 128, 215)", textDecoration: "underline" }}
+          >
+            {props.attraction.name}
+          </div>
         </div>
-        </Link>
-      </div>
-
+      </Link>
+    </div>
   );
 };
 

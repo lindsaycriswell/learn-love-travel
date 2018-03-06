@@ -21,20 +21,20 @@ LOCATION_COORDINATES = [
   {"Rome, Italy": [41.902783, 12.496366]},
   {"Sydney, Australia": [-33.868820, 151.209296]}]
 
-def create_locations
-  LOCATION_COORDINATES.each do |loc|
-    loc.each do |l, coords|
-      location_name = l
-      latitude = coords[0]
-      longitude = coords[1]
-      url_name = l.to_s.split(",")[0].split(" ").join("-")
-
-    Location.find_or_create_by(name: location_name, latitude_coordinate: latitude, longitude_coordinate: longitude, url_name: url_name)
-    end
-  end
-end
-
-create_locations
+# def create_locations
+#   LOCATION_COORDINATES.each do |loc|
+#     loc.each do |l, coords|
+#       location_name = l
+#       latitude = coords[0]
+#       longitude = coords[1]
+#       url_name = l.to_s.split(",")[0].split(" ").join("-")
+#
+#     Location.find_or_create_by(name: location_name, latitude_coordinate: latitude, longitude_coordinate: longitude, url_name: url_name)
+#     end
+#   end
+# end
+#
+# create_locations
 
 
 def attraction_search
@@ -60,6 +60,8 @@ def create_attractions
     att_location = Location.find_by(name: loc.to_s)
 
     att["businesses"].each do |a, details|
+      puts a
+      puts details
 
       att_name = a["name"]
       att_image_url = a["image_url"]
@@ -78,22 +80,22 @@ def create_attractions
       yelp_id = a["id"]
 
 
-      Attraction.find_or_create_by(location_id: att_location.id, name: att_name, image_url: att_image_url, yelp_url: att_yelp_url, average_rating: att_average_rating, latitude_coordinate: att_latitude, longitude_coordinate: att_longitude, address1: att_address1, address2: att_address2, city: att_city, state: att_state, zip_code: att_zip_code, country: att_country, display_address: att_display_address, url_name: url_name, yelp_id: yelp_id)
+      # Attraction.find_or_create_by(location_id: att_location.id, name: att_name, image_url: att_image_url, yelp_url: att_yelp_url, average_rating: att_average_rating, latitude_coordinate: att_latitude, longitude_coordinate: att_longitude, address1: att_address1, address2: att_address2, city: att_city, state: att_state, zip_code: att_zip_code, country: att_country, display_address: att_display_address, url_name: url_name, yelp_id: yelp_id)
     end
   end
 end
 
 create_attractions
-
-User.create(username: "DevilDrew", password_digest: "chipotle7", motto: "Not today, Satan!", bio: "Shady Reviewer")
-
-Comment.create(content: "NYC Review", user_id: 1, location_id: 1)
-Comment.create(content: "LA Review", user_id: 1, location_id: 2)
-Comment.create(content: "SF Review", user_id: 1, location_id: 3)
-Comment.create(content: "London Review", user_id: 1, location_id: 4)
-Comment.create(content: "Paris Review", user_id: 1, location_id: 5)
-Comment.create(content: "Buenos Aires Review", user_id: 1, location_id: 6)
-Comment.create(content: "Tokyo Review", user_id: 1, location_id: 7)
-Comment.create(content: "Hong Kong Review", user_id: 1, location_id: 8)
-Comment.create(content: "Rome Review", user_id: 1, location_id: 9)
-Comment.create(content: "Sydney Review", user_id: 1, location_id: 10)
+#
+# User.create(username: "DevilDrew", password_digest: "chipotle7", motto: "Not today, Satan!", bio: "Shady Reviewer")
+#
+# Comment.create(content: "NYC Review", user_id: 1, location_id: 1)
+# Comment.create(content: "LA Review", user_id: 1, location_id: 2)
+# Comment.create(content: "SF Review", user_id: 1, location_id: 3)
+# Comment.create(content: "London Review", user_id: 1, location_id: 4)
+# Comment.create(content: "Paris Review", user_id: 1, location_id: 5)
+# Comment.create(content: "Buenos Aires Review", user_id: 1, location_id: 6)
+# Comment.create(content: "Tokyo Review", user_id: 1, location_id: 7)
+# Comment.create(content: "Hong Kong Review", user_id: 1, location_id: 8)
+# Comment.create(content: "Rome Review", user_id: 1, location_id: 9)
+# Comment.create(content: "Sydney Review", user_id: 1, location_id: 10)

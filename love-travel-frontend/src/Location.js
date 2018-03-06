@@ -15,6 +15,7 @@ const unsplash = new Unsplash({
 class Location extends React.Component {
   state = {
     photos: []
+    // url_path: [this.props.location.url_name]
   };
 
   componentDidMount() {
@@ -29,20 +30,28 @@ class Location extends React.Component {
   }
 
   render() {
+    console.log(routerParams);
+    // console.log(this.props.url.params.name);
+    // console.log(this.state.url_path);
+    // console.log(this.props.findLocation);
     return (
       <div>
         <div />
-        <div className="ui huge header">
-          <h1 className="ui blue header">{this.props.location.name}</h1>
-        </div>
         <div className="ui fluid image">
           {this.state.photos[0] ? <Photo photo={this.state.photos[0]} /> : null}
         </div>
-        <div className="ui grid">
+        <div className="ui huge header">
+          <h1 className="ui blue header">{this.props.location.name}</h1>
+        </div>
+
+        <div className="ui padded grid">
           <div className="two wide column" />
           <div className="five wide column">
             {this.props.location.attractions ? (
-              <div className="ui relaxed divided list">
+              <div
+                className="ui relaxed divided list"
+                style={{ textAlign: "left" }}
+              >
                 <h2 className="ui blue header">Popular Attractions</h2>
                 {this.props.location.attractions.map(attraction => (
                   <Attraction attraction={attraction} key={attraction.id} />
@@ -71,7 +80,7 @@ class Location extends React.Component {
             </div>
           </div>
           <div className="two wide column" />
-          <PhotoList photos={this.state.photos.slice(1)} />
+          <PhotoList photos={this.state.photos.slice(1, 8)} />
         </div>
       </div>
     );

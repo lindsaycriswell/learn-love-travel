@@ -2,6 +2,7 @@
 
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import React from "react";
+import { Link } from "react-router-dom";
 
 // other components
 
@@ -13,7 +14,7 @@ export class MapContainer extends React.Component {
     this.state = {
       showingInfoWindow: false,
       activeMarker: {},
-      selectedPlace: "",
+      selectedPlace: ""
     };
 
     // binding this to event-handler functions
@@ -44,6 +45,9 @@ export class MapContainer extends React.Component {
     return (
       <div style={{ height: "100vh", paddingLeft: "10px" }} className="ui grid">
         <div className="ten wide column">
+          <h2 className="ui blue header">
+            Click a flag to start planning your next trip!
+          </h2>
           <Map
             google={this.props.google}
             onClick={this.onMapClicked}
