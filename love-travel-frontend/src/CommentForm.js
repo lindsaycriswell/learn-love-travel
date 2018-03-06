@@ -1,6 +1,7 @@
 import React from "react";
 
 const CommentForm = props => {
+  console.log(props);
   return (
     <div>
       <h3 className="ui blue header">
@@ -12,7 +13,7 @@ const CommentForm = props => {
         value={props.formValue}
         onChange={props.handleChange}
       />
-      <button onClick={props.handleClick}>Submit</button>
+      <button onClick={props.handlePost}>Submit</button>
     </div>
   );
 };

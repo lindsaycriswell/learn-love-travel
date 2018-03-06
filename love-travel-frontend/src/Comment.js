@@ -17,9 +17,6 @@ class Comment extends React.Component {
   }
 
   render() {
-    console.log(this.props.currentUser.id);
-    console.log(this.state.reviewUser.id);
-
     return (
       <div className="ui item">
         <div className="content" style={{ margin: "5px" }}>
@@ -29,7 +26,14 @@ class Comment extends React.Component {
           <div className="description" style={{ textAlign: "left" }}>
             {this.props.comment.content}
             {this.props.currentUser.id === this.state.reviewUser.id ? (
-              <a to={"edit"} style={{float: "right"}}>Edit</a>
+              <div>
+                <a to={"edit"} style={{ float: "left" }}>
+                  Edit
+                </a>
+                <a to={"delete"} style={{ float: "right" }}>
+                  Delete
+                </a>
+              </div>
             ) : null}
           </div>
         </div>

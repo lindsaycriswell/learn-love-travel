@@ -1,13 +1,13 @@
 import React from "react";
 import CommentList from "./CommentList";
-import CommentForm from "./CommentForm";
 
 class CommentContainer extends React.Component {
   state = {
     comments: [],
     user_id: "",
     location_id: null,
-    content: ""
+    content: "",
+    editClicked: false
   };
 
   componentDidMount() {
@@ -24,7 +24,7 @@ class CommentContainer extends React.Component {
     });
   };
 
-  handleClick = event => {
+  handlePost = event => {
     event.preventDefault();
     fetch("http://localhost:3000/api/v1/comments", {
       method: "POST",
@@ -50,20 +50,16 @@ class CommentContainer extends React.Component {
   render() {
     return (
       <div>
-        <div>
-          <CommentList
-            comments={this.state.comments}
-            currentUser={this.props.currentUser}
-          />
-        </div>
-        <div>
-          <CommentForm
-            location={this.props.location}
-            formValue={this.state.content}
-            handleChange={this.handleChange}
-            handleClick={this.handleClick}
-          />
-        </div>
+        <CommentList
+          comments={this.state.comments}
+          currentUser={this.props.currentUser}
+          location={this.props.location}
+          content={this.state.content}
+          handleChange={this.handleChange}
+          handlePost={this.handlePost}
+          handlePatch={this.handlePatch}
+          editClicked={this.state.editClicked}
+        />
       </div>
     );
   }
