@@ -25,7 +25,6 @@ class Comment extends React.Component {
           </a>
           <div className="description" style={{ textAlign: "left" }}>
             {this.props.comment.content}
-            {this.props.comment.id}
             <div>
               {this.props.currentUser.id === this.state.reviewUser.id ? (
                 <div>

@@ -105,7 +105,7 @@ class CommentContainer extends React.Component {
         <div>
           <CommentForm
             location={this.props.location}
-            formValue={this.state.content}
+            lue={this.state.content}
             handleChange={this.handleChange}
             handleFetch={this.handleFetch}
           />

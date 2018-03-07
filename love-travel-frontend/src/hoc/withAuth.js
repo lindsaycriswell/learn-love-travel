@@ -3,7 +3,8 @@ import React from 'react'
 
 const withAuth = (WrappedComponent) => {
   return props => {
-    return props.auth.loggedIn ?
+    console.log(props.auth)
+    return props.auth.loggingIn || props.auth.loggedIn ?
       (<WrappedComponent {...props} />)
         :
       (<Redirect to="/" />)
