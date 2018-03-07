@@ -32,7 +32,7 @@ class Location extends React.Component {
   render() {
     if (this.props.location) {
       // Comment out if over API limit
-      // this.state.photos.length ? null : this.getPhotos();
+      this.state.photos.length ? null : this.getPhotos();
 
       return (
         <div>
@@ -68,22 +68,16 @@ class Location extends React.Component {
             <div className="two wide column" />
             <div className="five wide column">
               <div>
-                {this.props.location.comments.length > 0 ? (
-                  <div>
-                    <h2 className="ui blue header">
-                      Reviews of {this.props.location.name}
-                    </h2>
-                    <CommentContainer
-                      comments={this.props.location.comments}
-                      location={this.props.location}
-                      currentUser={this.props.currentUser}
-                    />
-                  </div>
-                ) : (
+                <div>
                   <h2 className="ui blue header">
-                    Be the first to review {this.props.location.name}
+                    Reviews of {this.props.location.name}
                   </h2>
-                )}{" "}
+                  <CommentContainer
+                    comments={this.props.location.comments}
+                    location={this.props.location}
+                    currentUser={this.props.currentUser}
+                  />
+                </div>
               </div>
             </div>
             <div className="two wide column" />
