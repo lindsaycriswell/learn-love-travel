@@ -1,8 +1,7 @@
 import React from "react";
-import withAuth from './hoc/withAuth'
+import withAuth from "./hoc/withAuth";
 
 const CommentForm = props => {
-  console.log(props);
   return (
     <div>
       <h3 className="ui blue header">
@@ -14,9 +13,9 @@ const CommentForm = props => {
         value={props.formValue}
         onChange={props.handleChange}
       />
-      <button onClick={props.handlePost}>Submit</button>
+      <button onClick={props.handleFetch}>Submit</button>
     </div>
   );
 };
 
-export default CommentForm
+export default CommentForm;

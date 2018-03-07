@@ -1,6 +1,6 @@
 import React from "react";
 import CommentList from "./CommentList";
-import withAuth from './hoc/withAuth'
+import CommentForm from "./CommentForm";
 
 class CommentContainer extends React.Component {
   state = {
@@ -8,7 +8,8 @@ class CommentContainer extends React.Component {
     user_id: "",
     location_id: null,
     content: "",
-    editClicked: false
+    editComment: false,
+    commentId: null
   };
 
   componentDidMount() {
@@ -25,46 +26,93 @@ class CommentContainer extends React.Component {
     });
   };
 
-  handlePost = event => {
+  handleFetch = event => {
     event.preventDefault();
-    fetch("http://localhost:3000/api/v1/comments", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-        Accepts: "application/json"
-      },
-      body: JSON.stringify({
-        user_id: this.state.user_id,
-        location_id: this.state.location_id,
-        content: this.state.content.toString()
-      })
-    })
-      .then(res => res.json())
-      .then(json =>
-        this.setState({
-          comments: [...this.state.comments, json],
-          content: ""
+    if (this.state.editComment) {
+      fetch(`http://localhost:3000/api/v1/comments/${this.state.commentId}`, {
+        method: "PATCH",
+        headers: {
+          "content-type": "application/json",
+          Accepts: "application/json"
+        },
+        body: JSON.stringify({
+          user_id: this.state.user_id,
+          location_id: this.state.location_id,
+          content: this.state.content.toString()
         })
-      );
+      })
+        .then(res => res.json())
+        .then(json =>
+          this.setState({
+            comments: [...this.state.comments, json],
+            // this.state.comments.slice(0, this.state.comments.indexOf(json)),
+            //
+            // this.state.comments.slice(this.state.comments.indexOf(json) + 1)
+            content: "",
+            editComment: false,
+            commentId: null
+          })
+        );
+    } else {
+      fetch("http://localhost:3000/api/v1/comments", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+          Accepts: "application/json"
+        },
+        body: JSON.stringify({
+          user_id: this.state.user_id,
+          location_id: this.state.location_id,
+          content: this.state.content.toString()
+        })
+      })
+        .then(res => res.json())
+        .then(json =>
+          this.setState({
+            comments: [...this.state.comments, json],
+            content: ""
+          })
+        );
+    }
+  };
+
+  editComment = comment => {
+    this.setState({
+      content: comment.content,
+      editComment: true,
+      commentId: comment.id
+    });
+  };
+
+  deleteComment = comment => {
+    console.log(comment);
+    fetch(`http://localhost:3000/api/v1/comments/${comment.id}`, {
+      method: "DELETE"
+    });
   };
 
   render() {
     return (
       <div>
-        <CommentList
-          auth={this.props.auth}
-          comments={this.state.comments}
-          currentUser={this.props.currentUser}
-          location={this.props.location}
-          content={this.state.content}
-          handleChange={this.handleChange}
-          handlePost={this.handlePost}
-          handlePatch={this.handlePatch}
-          editClicked={this.state.editClicked}
-        />
+        <div>
+          <CommentList
+            comments={this.state.comments}
+            currentUser={this.props.currentUser}
+            editComment={this.editComment}
+            deleteComment={this.deleteComment}
+          />
+        </div>
+        <div>
+          <CommentForm
+            location={this.props.location}
+            formValue={this.state.content}
+            handleChange={this.handleChange}
+            handleFetch={this.handleFetch}
+          />
+        </div>
       </div>
     );
   }
 }
 
-export default CommentContainer
+export default CommentContainer;

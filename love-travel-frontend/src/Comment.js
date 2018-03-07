@@ -25,16 +25,27 @@ class Comment extends React.Component {
           </a>
           <div className="description" style={{ textAlign: "left" }}>
             {this.props.comment.content}
-            {this.props.currentUser.id === this.state.reviewUser.id ? (
-              <div>
-                <a to={"edit"} style={{ float: "left" }}>
-                  Edit
-                </a>
-                <a to={"delete"} style={{ float: "right" }}>
-                  Delete
-                </a>
-              </div>
-            ) : null}
+            {this.props.comment.id}
+            <div>
+              {this.props.currentUser.id === this.state.reviewUser.id ? (
+                <div>
+                  <a
+                    to={"edit"}
+                    style={{ float: "left" }}
+                    onClick={() => this.props.editComment(this.props.comment)}
+                  >
+                    Edit
+                  </a>
+                  <a
+                    to={"delete"}
+                    style={{ float: "right" }}
+                    onClick={() => this.props.deleteComment(this.props.comment)}
+                  >
+                    Delete
+                  </a>
+                </div>
+              ) : null}
+            </div>
           </div>
         </div>
       </div>
@@ -42,4 +53,4 @@ class Comment extends React.Component {
   }
 }
 
-export default Comment
+export default Comment;
