@@ -39,4 +39,4 @@ class AttractionDetail extends React.Component {
   }
 }
 
-export default AttractionDetail
+export default withAuth(AttractionDetail)

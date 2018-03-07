@@ -3,6 +3,8 @@
 import React from 'react'
 import { DateRangePicker } from 'react-dates';
 import { Redirect } from 'react-router'
+import withAuth from '../hoc/withAuth'
+
 
 //components
 // import TripForm from './tripForm'
@@ -75,4 +77,4 @@ postTrip = (start, end, city, user, notes) => {
   }
 }
 
-export default MakeTrip
+export default withAuth(MakeTrip)

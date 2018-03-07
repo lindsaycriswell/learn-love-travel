@@ -217,6 +217,7 @@ class App extends React.Component {
             render={props => (
               <SignUp
                 {...props}
+                setCurrentUser={this.setCurrentUser}
                 auth={this.state.auth}
                 currentUser={user}
                 login={this.login}
@@ -230,7 +231,7 @@ class App extends React.Component {
               <FirstSignUpPage
                 {...props}
                 auth={this.state.auth}
-                currentUser={user}
+                currentUser={this.state.currentUser}
               />
             )}
           />
@@ -241,7 +242,7 @@ class App extends React.Component {
               <Welcome
                 {...props}
                 auth={this.state.auth}
-                currentUser={user}
+                currentUser={this.state.currentUser}
               />
             )}
           />
