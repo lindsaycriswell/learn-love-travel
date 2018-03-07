@@ -2,6 +2,8 @@
 
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import React from "react";
+import withAuth from './hoc/withAuth'
+
 // import { Link } from "react-router-dom";
 // import withAuth from "./hoc/withAuth";
 
@@ -104,6 +106,6 @@ export class MapContainer extends React.Component {
   }
 }
 
-export default GoogleApiWrapper({
+export default withAuth(GoogleApiWrapper({
   apiKey: "AIzaSyDTnFckTcPidqCa5F9dWom4H_0hbJu9Nh0"
-})(MapContainer);
+})(MapContainer))

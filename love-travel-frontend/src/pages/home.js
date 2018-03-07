@@ -27,7 +27,7 @@ class Home extends React.Component {
   onFormSubmit = (e) => {
    e.preventDefault()
    this.setState({
-     redirect:true
+     redirect: true
    })
    this.props.loginFn(this.state.username, this.state.password)
  }
