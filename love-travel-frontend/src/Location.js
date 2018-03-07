@@ -4,8 +4,7 @@ import PhotoList from "./PhotoList";
 import Photo from "./Photo";
 import CommentContainer from "./CommentContainer";
 import Unsplash from "unsplash-js";
-import withAuth from './hoc/withAuth'
-
+import withAuth from "./hoc/withAuth";
 
 const unsplash = new Unsplash({
   applicationId:
@@ -33,7 +32,7 @@ class Location extends React.Component {
   render() {
     if (this.props.location) {
       // Comment out if over API limit
-      this.state.photos.length ? null : this.getPhotos();
+      // this.state.photos.length ? null : this.getPhotos();
 
       return (
         <div>
@@ -92,4 +91,4 @@ class Location extends React.Component {
   }
 }
 
-export default withAuth(Location)
+export default withAuth(Location);
