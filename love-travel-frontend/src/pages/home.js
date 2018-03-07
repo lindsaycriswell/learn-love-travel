@@ -26,10 +26,13 @@ class Home extends React.Component {
 
   onFormSubmit = (e) => {
    e.preventDefault()
-   this.setState({
-     redirect: true
-   })
-   this.props.loginFn(this.state.username, this.state.password)
+  this.props.loginFn(this.state.username, this.state.password)
+  setTimeout(() => {
+    this.setState({
+      redirect: true
+    })
+  }, 1000)
+   console.log('in the home form submit')
  }
 
 

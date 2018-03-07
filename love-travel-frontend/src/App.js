@@ -111,6 +111,7 @@ class App extends React.Component {
           loggingIn: false
         });
       } else {
+        console.log('in the app login')
         localStorage.setItem("token", j.token);
         localStorage.setItem( 'user', JSON.stringify( j.user ) )
         this.setState(
