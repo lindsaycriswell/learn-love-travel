@@ -32,7 +32,9 @@ class FirstSignUpPage extends React.Component {
   }
 
   postUserInfo = (motto, bio) => {
-    fetch(`http://localhost:3000/users/${this.props.currentUser.id}`, {
+    let user = JSON.parse(localStorage.getItem("user"))
+      console.log('in first sign up page', user)
+    fetch(`http://localhost:3000/users/${user.id}`, {
      method: "PATCH",
      headers: {
        "Content-Type": "application/json"
@@ -51,7 +53,6 @@ class FirstSignUpPage extends React.Component {
   }
 
   render(){
-    // console.log('in first sign up page', this.props.currentUser)
     return(
       <div className="ui grid">
         {this.state.redirect ?  <Redirect to='/welcome'/> : null}

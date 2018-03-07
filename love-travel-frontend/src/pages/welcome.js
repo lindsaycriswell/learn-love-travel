@@ -13,10 +13,10 @@ const Welcome = (props) => {
     backgroundSize: "cover",
     backgroundImage: `url(${Image})`
   }
-
   let user = JSON.parse(localStorage.getItem("user"))
-
+  
   return(
+
     <div style={sectionStyle} className="ui grid">
       <div className="two wide column"></div>
       <div className="eight wide column" style={{textAlign: "left"}}>
