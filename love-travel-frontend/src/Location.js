@@ -32,6 +32,7 @@ class Location extends React.Component {
   render() {
     if (this.props.location) {
       // Comment out if over API limit
+      // this.getPhotos();
       // this.state.photos.length ? null : this.getPhotos();
 
       return (

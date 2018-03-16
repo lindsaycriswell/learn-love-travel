@@ -1,5 +1,5 @@
 import React from "react";
-import withAuth from "./hoc/withAuth";
+// import withAuth from "./hoc/withAuth";
 
 const CommentForm = props => {
   return (
