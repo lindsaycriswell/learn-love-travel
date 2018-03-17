@@ -40,20 +40,19 @@ class CommentContainer extends React.Component {
           location_id: this.state.location_id,
           content: this.state.content.toString()
         })
-      });
-      // .then(res => res.json())
-      // .then(
-      //   json => console.log(json)
-      // this.setState({
-      //   comments: [...this.state.comments, json],
-      //   // this.state.comments.slice(0, this.state.comments.indexOf(json)),
-      //   //
-      //   // this.state.comments.slice(this.state.comments.indexOf(json) + 1)
-      //   content: "",
-      //   editComment: false,
-      //   commentId: null
-      // })
-      // );
+      })
+        .then(res => res.json())
+        .then(json =>
+          this.setState({
+            comments: [
+              ...this.state.comments.filter(c => c.id !== json.id),
+              json
+            ],
+            content: "",
+            editComment: false,
+            commentId: null
+          })
+        );
     } else {
       fetch("http://localhost:3000/api/v1/comments", {
         method: "POST",
@@ -78,11 +77,6 @@ class CommentContainer extends React.Component {
   };
 
   editComment = comment => {
-    // find comment in state.comments, reassign content, filter into new state?
-    let editedComment = this.state.comments.filter(c => c.id === comment.id);
-    console.log(this.state.comments);
-    console.log(comment);
-    console.log(editedComment);
     this.setState({
       content: comment.content,
       editComment: true,

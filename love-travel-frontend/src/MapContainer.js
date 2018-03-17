@@ -45,7 +45,6 @@ export class MapContainer extends React.Component {
   // <div style={{ padding: "10px" }}>
 
   render() {
-    // console.log(this.props.auth)
     return (
       <div style={{ height: "100vh", paddingLeft: "10px" }} className="ui grid">
         <div className="ten wide column">
