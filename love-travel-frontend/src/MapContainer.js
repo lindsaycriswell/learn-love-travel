@@ -48,7 +48,7 @@ export class MapContainer extends React.Component {
     return (
       <div style={{ height: "100vh", paddingLeft: "10px" }} className="ui grid">
         <div className="ten wide column">
-          <h2 className="ui blue header">
+          <h2 className="ui blue header" style={{ topMargin: "30px" }}>
             Click a flag to start planning your next trip!
           </h2>
           <Map
