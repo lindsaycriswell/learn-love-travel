@@ -18,7 +18,7 @@ A travel planning app for multiple cities with top attraction information. Ruby 
 * React
 
 ## Install
-1. Clone this repo - https://github.com/brianabaker/love-travel
+1. Fork and clone this repo - https://github.com/brianabaker/love-travel
 2. Navigate to love-travel-backend, complete backend setup
 3. In a separate terminal window, navigate to love-travel-frontend, complete frontend setup
 
