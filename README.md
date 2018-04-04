@@ -3,7 +3,7 @@ A travel planning app for exploring cities and attractions. Ruby on Rails back e
 
 ![front-page-screencap](learn-love-travel-splash.png)
 
-[Learn.Love.Travel. Demo](https://www.youtube.com/watch?v=tlp6Bd8HyX4)
+[Learn.Love.Travel. Demo](https://youtu.be/rH24vAmeyNM)
 
 ## How To Use
 * View the Travel Map and select a city for more information.
