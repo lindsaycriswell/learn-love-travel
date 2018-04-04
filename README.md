@@ -25,7 +25,7 @@ A travel planning app for exploring cities and attractions. Ruby on Rails back e
 ## Backend Setup
 After navigating to love-travel-backend, in that directory: 
 1. Install Gems `bundle install`
-2. Setup Database `rake db:setup`
+2. Set up Database `rake db:create`, then run `rake db:migrate`
 3. Seed Database `rake db:seed`
 4. Start your server `rails s`
 
