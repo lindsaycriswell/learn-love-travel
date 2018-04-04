@@ -31,7 +31,7 @@ class App extends React.Component {
   state = {
     auth: {
       loggedIn: false,
-      loggingIn: true,
+      loggingIn: true
     },
     city: "",
     locations: [],
@@ -42,20 +42,20 @@ class App extends React.Component {
   componentDidMount() {
     const token = localStorage.getItem("token");
     if (token) {
-      fetch('http://localhost:3000/currentuser', {
-        method: 'POST',
-        headers: {"Authorization": token}
+      fetch("http://localhost:3000/currentuser", {
+        method: "POST",
+        headers: { Authorization: token }
       })
-      .then(res => res.json())
-      .then(json => {
-        this.setState({
-          auth: {
-            loggedIn: true,
-            token: token,
-            loggingIn: false
-          }
-        })
-      })
+        .then(res => res.json())
+        .then(json => {
+          this.setState({
+            auth: {
+              loggedIn: true,
+              token: token,
+              loggingIn: false
+            }
+          });
+        });
     } else {
       this.setState({
         auth: {
@@ -111,18 +111,17 @@ class App extends React.Component {
           loggingIn: false
         });
       } else {
-        console.log('in the app login')
+        console.log("in the app login");
         localStorage.setItem("token", j.token);
-        localStorage.setItem( 'user', JSON.stringify( j.user ) )
-        this.setState(
-          {
-            currentUser: j.user,
-            auth: {
-              loggedIn: true,
-              token: j.token,
-              loggingIn: false
-            }
-          });
+        localStorage.setItem("user", JSON.stringify(j.user));
+        this.setState({
+          currentUser: j.user,
+          auth: {
+            loggedIn: true,
+            token: j.token,
+            loggingIn: false
+          }
+        });
       }
     });
   }; // ENDS LOGIN
@@ -139,9 +138,11 @@ class App extends React.Component {
     });
   }; // ENDS LOG OUT
 
+  //
+  // <Route exact path="/welcome" render={props => (
+  //   <Welcome {...props} auth={this.state.auth} /> )} />
   render() {
-
-    let user = JSON.parse(localStorage.getItem("user"))
+    let user = JSON.parse(localStorage.getItem("user"));
 
     return (
       <div className="App">
@@ -150,7 +151,9 @@ class App extends React.Component {
           currentUser={user}
           auth={this.state.auth}
         />
+
         <Switch>
+          <Route exact path="/about" component={About} />
           <Route
             path="/locations/:name"
             render={routerParams => {
@@ -211,7 +214,9 @@ class App extends React.Component {
               />
             )}
           />
+
           <Route exact path="/about" component={About} />
+
           <Route
             exact
             path="/signup"
@@ -263,11 +268,7 @@ class App extends React.Component {
             exact
             path="/yourTrips"
             render={props => (
-              <YourTrips
-                {...props}
-                auth={this.state.auth}
-                currentUser={user}
-              />
+              <YourTrips {...props} auth={this.state.auth} currentUser={user} />
             )}
           />
         </Switch>
