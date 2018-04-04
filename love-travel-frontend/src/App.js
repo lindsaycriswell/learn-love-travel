@@ -138,6 +138,9 @@ class App extends React.Component {
     });
   }; // ENDS LOG OUT
 
+  //
+  // <Route exact path="/welcome" render={props => (
+  //   <Welcome {...props} auth={this.state.auth} /> )} />
   render() {
     let user = JSON.parse(localStorage.getItem("user"));
 
@@ -148,7 +151,9 @@ class App extends React.Component {
           currentUser={user}
           auth={this.state.auth}
         />
+
         <Switch>
+          <Route exact path="/about" component={About} />
           <Route
             path="/locations/:name"
             render={routerParams => {
@@ -209,7 +214,9 @@ class App extends React.Component {
               />
             )}
           />
+
           <Route exact path="/about" component={About} />
+
           <Route
             exact
             path="/signup"
