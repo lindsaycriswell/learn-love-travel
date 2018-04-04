@@ -38,5 +38,5 @@ After navigating to love-travel-frontend, in that directory:
 Navigate to the web address of your Node server [http://localhost:3001](http://localhost:3001) - or whatever yours is
 
 ## Contributors 
-* Briana Baker (https://github.com/brianabaker)
-* Lindsay Criswell (https://github.com/lindsaycriswell)
+* [Briana Baker](https://github.com/brianabaker)
+* [Lindsay Criswell](https://github.com/lindsaycriswell)
