@@ -2,8 +2,7 @@ import React from "react";
 import { Redirect } from "react-router";
 import { Link } from "react-router-dom";
 import Attraction from "./Attraction";
-import withAuth from './hoc/withAuth'
-
+// import withAuth from './hoc/withAuth'
 
 class AttractionList extends React.Component {
   state = {
@@ -35,7 +34,7 @@ class AttractionList extends React.Component {
         <button onClick={this.addTrip}>Add To My Trips</button>
         {this.props.location.attractions.map(attraction => (
           <div className="ui item" key={attraction.id}>
-            <Attraction  auth={this.props.auth} attraction={attraction} />
+            <Attraction auth={this.props.auth} attraction={attraction} />
           </div>
         ))}
       </div>
@@ -43,4 +42,4 @@ class AttractionList extends React.Component {
   }
 }
 
-export default AttractionList
+export default AttractionList;

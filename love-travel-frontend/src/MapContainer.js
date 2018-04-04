@@ -2,7 +2,7 @@
 
 import { Map, InfoWindow, Marker, GoogleApiWrapper } from "google-maps-react";
 import React from "react";
-import withAuth from './hoc/withAuth'
+import withAuth from "./hoc/withAuth";
 
 // import { Link } from "react-router-dom";
 // import withAuth from "./hoc/withAuth";
@@ -45,11 +45,10 @@ export class MapContainer extends React.Component {
   // <div style={{ padding: "10px" }}>
 
   render() {
-    console.log(this.props.auth)
     return (
       <div style={{ height: "100vh", paddingLeft: "10px" }} className="ui grid">
         <div className="ten wide column">
-          <h2 className="ui blue header">
+          <h2 className="ui blue header" style={{ topMargin: "30px" }}>
             Click a flag to start planning your next trip!
           </h2>
           <Map
@@ -107,6 +106,8 @@ export class MapContainer extends React.Component {
   }
 }
 
-export default withAuth(GoogleApiWrapper({
-  apiKey: "AIzaSyDTnFckTcPidqCa5F9dWom4H_0hbJu9Nh0"
-})(MapContainer))
+export default withAuth(
+  GoogleApiWrapper({
+    apiKey: "AIzaSyDTnFckTcPidqCa5F9dWom4H_0hbJu9Nh0"
+  })(MapContainer)
+);

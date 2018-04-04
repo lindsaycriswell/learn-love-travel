@@ -44,10 +44,10 @@ class CommentContainer extends React.Component {
         .then(res => res.json())
         .then(json =>
           this.setState({
-            comments: [...this.state.comments, json],
-            // this.state.comments.slice(0, this.state.comments.indexOf(json)),
-            //
-            // this.state.comments.slice(this.state.comments.indexOf(json) + 1)
+            comments: [
+              ...this.state.comments.filter(c => c.id !== json.id),
+              json
+            ],
             content: "",
             editComment: false,
             commentId: null
@@ -85,13 +85,20 @@ class CommentContainer extends React.Component {
   };
 
   deleteComment = comment => {
-    console.log(comment);
-    fetch(`http://localhost:3000/api/v1/comments/${comment.id}`, {
-      method: "DELETE"
+    console.log(this.state.comments);
+    let updatedComments = this.state.comments.find(c => c.id !== comment.id);
+    this.setState({
+      comments: updatedComments
     });
+    console.log(updatedComments);
+    //
+    // fetch(`http://localhost:3000/api/v1/comments/${comment.id}`, {
+    //   method: "DELETE"
+    // });
   };
 
   render() {
+    // console.log(this.state.comments);
     return (
       <div>
         <div>
@@ -105,7 +112,7 @@ class CommentContainer extends React.Component {
         <div>
           <CommentForm
             location={this.props.location}
-            lue={this.state.content}
+            formValue={this.state.content}
             handleChange={this.handleChange}
             handleFetch={this.handleFetch}
           />
