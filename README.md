@@ -5,13 +5,19 @@ A travel planning app for multiple cities with top attraction information. Ruby 
 
 [Learn. Love. Travel. Demo](https://youtu.be/b1hBes6fejQ)
 
+## How To Use
+* View the Travel Map and select a city for more information 
+* The cities have top attraction information and a comments section 
+* You can read comments about a city, and write some of your own
+* Plan a trip to a city on specific dates and write any notes about your future trip!
+
 ## Prerequisites
 
 * Ruby v5.1.4
 * PostgreSQL 10
 * React
 
-# How to Use
+## Install
 1. Clone this repo - https://github.com/brianabaker/love-travel
 2. Navigate to love-travel-backend, complete backend setup
 3. In a separate terminal window, navigate to love-travel-frontend, complete frontend setup
