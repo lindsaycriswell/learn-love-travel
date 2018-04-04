@@ -1,15 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
 // import withAuth from "./hoc/withAuth";
-// import StarRatings from "react-star-ratings";
+import StarRatings from "react-star-ratings";
 
-// <StarRatings
-//   rating={props.attraction.average_rating}
-//   starDimension="12px"
-//   starSpacing="2px"
-//   starRatedColor="blue"
-// />
 const Attraction = props => {
+  console.log(props.attraction.average_rating);
   return (
     <div auth={props.auth} key={props.attraction.id} className="ui item">
       <Link
@@ -32,7 +27,12 @@ const Attraction = props => {
           </div>
         </div>
       </Link>
-
+      <StarRatings
+        rating={props.attraction.average_rating}
+        starDimension="12px"
+        starSpacing="2px"
+        starRatedColor="blue"
+      />
     </div>
   );
 };

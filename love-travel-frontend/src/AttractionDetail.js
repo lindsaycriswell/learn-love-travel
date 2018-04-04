@@ -2,15 +2,7 @@ import React from "react";
 import ReviewList from "./ReviewList";
 import { Link } from "react-router-dom";
 import withAuth from "./hoc/withAuth";
-// import StarRatings from "react-star-ratings";
-
-
-// <StarRatings
-//   rating={this.props.attraction.average_rating}
-//   starRatedColor="blue"
-//   starDimension="30px"
-//   starSpacing="4px"
-// />
+import StarRatings from "react-star-ratings";
 
 class AttractionDetail extends React.Component {
   render() {
@@ -20,6 +12,12 @@ class AttractionDetail extends React.Component {
           <h1 className="ui blue header" style={{ topMargin: "30px" }}>
             {this.props.attraction.name}
           </h1>
+          <StarRatings
+            rating={this.props.attraction.average_rating}
+            starRatedColor="blue"
+            starDimension="30px"
+            starSpacing="4px"
+          />;
           <Link
             style={{ marginTop: "10px" }}
             auth={this.props.auth}
@@ -33,7 +31,6 @@ class AttractionDetail extends React.Component {
               Return to {this.props.attraction.location.name}
             </h3>
           </Link>
-
           <img src={this.props.attraction.image_url} alt="" />
           <h1 className="ui blue header">Reviews</h1>
           <ReviewList
