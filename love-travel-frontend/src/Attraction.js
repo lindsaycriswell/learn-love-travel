@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 // import withAuth from "./hoc/withAuth";
+import StarRatings from "react-star-ratings";
 
 const Attraction = props => {
   return (
@@ -25,8 +26,14 @@ const Attraction = props => {
           </div>
         </div>
       </Link>
+      <StarRatings
+        rating={props.attraction.average_rating}
+        starDimension="12px"
+        starSpacing="2px"
+        starRatedColor="blue"
+      />
     </div>
   );
 };
 
-export default Attraction
+export default Attraction;

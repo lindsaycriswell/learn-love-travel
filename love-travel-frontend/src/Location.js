@@ -4,8 +4,7 @@ import PhotoList from "./PhotoList";
 import Photo from "./Photo";
 import CommentContainer from "./CommentContainer";
 import Unsplash from "unsplash-js";
-import withAuth from './hoc/withAuth'
-
+import withAuth from "./hoc/withAuth";
 
 const unsplash = new Unsplash({
   applicationId:
@@ -92,4 +91,4 @@ class Location extends React.Component {
   }
 }
 
-export default withAuth(Location)
+export default withAuth(Location);
