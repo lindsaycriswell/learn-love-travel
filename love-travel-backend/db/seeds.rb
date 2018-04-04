@@ -55,7 +55,7 @@ LOCATION_COORDINATES = [
   {"Denver, CO": [39.739236, -104.990251]},
   {"Washington, DC": [38.907192, -77.036871]},
   {"Miami, FL": [25.761680, -80.19179]},
-  {"Atlanda, GA": [33.748995, -84.387982]},
+  {"Atlanta, GA": [33.748995, -84.387982]},
   {"Lahaina, HI": [20.878333, -156.6825]},
   {"Chicago, IL": [41.878114, -87.629798]},
   {"New Orleans, LA": [29.951066, -90.071532]},
@@ -70,78 +70,95 @@ LOCATION_COORDINATES = [
 ]
 
 
-def create_locations
-  LOCATION_COORDINATES.each do |loc|
-    loc.each do |l, coords|
-      location_name = l
-      latitude = coords[0]
-      longitude = coords[1]
-      url_name = l.to_s.split(",")[0].split(" ").join("-")
+# def create_locations
+#   LOCATION_COORDINATES.each do |loc|
+#     loc.each do |l, coords|
+#       location_name = l
+#       latitude = coords[0]
+#       longitude = coords[1]
+#       url_name = l.to_s.split(",")[0].split(" ").join("-")
+#
+#     Location.create(name: location_name, latitude_coordinate: latitude, longitude_coordinate: longitude, url_name: url_name)
+#     end
+#   end
+# end
+#
+# create_locations
+#
+#
+# def attraction_search
+#   all_responses = {}
+#
+#   LOCATION_COORDINATES.each do |loc|
+#     loc.each do |l, coords|
+#
+#       url = "#{API_HOST}"
+#       params = {term: "tourist_attractions", location: "#{l}", limit: 10}
+#
+#       response = HTTP.auth("Bearer #{API_KEY}").get(url, params: params)
+#
+#       all_responses[l] = response.parse
+#     end
+#   end
+#   puts all_responses
+# end
+#
+# attraction_search
+#
+# def create_attractions
+#   yelp_hash = attraction_search
+#   yelp_hash.each do |loc, att|
+#     att_location = Location.find_by(name: loc.to_s)
+#
+#     att["businesses"].each do |a, details|
+#       att_name = a["name"]
+#       att_image_url = a["image_url"]
+#       att_yelp_url = a["url"]
+#       att_average_rating = a["rating"]
+#       att_latitude = a["coordinates"]["latitude"]
+#       att_longitude = a["coordinates"]["longitude"]
+#       att_address1 = a["location"]["address1"]
+#       att_address2 = a["location"]["address2"]
+#       att_city = a["location"]["city"]
+#       att_state = a["location"]["state"]
+#       att_zip_code = a["location"]["zip_code"]
+#       att_country = a["location"]["country"]
+#       att_display_address = a["location"]["display_address"]
+#       url_name = att_name.split(" ").join("-")
+#       yelp_id = a["id"]
+#
+#
+#       Attraction.create(location_id: att_location.id, name: att_name, image_url: att_image_url, yelp_url: att_yelp_url, average_rating: att_average_rating, latitude_coordinate: att_latitude, longitude_coordinate: att_longitude, address1: att_address1, address2: att_address2, city: att_city, state: att_state, zip_code: att_zip_code, country: att_country, display_address: att_display_address, url_name: url_name, yelp_id: yelp_id)
+#     end
+#   end
+# end
+#
+# create_attractions
+#
+# User.create(username: "ShadyReviewer", password_digest: "chipotle7", motto: "Not today, Satan!", bio: "Shady Reviewer")
+#
+# Comment.create(content: "Pizza rat. 'Nuff said.'", user_id: 1, location_id: 1)
+# Comment.create(content: "I spent my whole vacation stuck in traffic", user_id: 1, location_id: 2)
+# Comment.create(content: "Too many tech bros", user_id: 1, location_id: 3)
+# Comment.create(content: "Beers cost $15. Fuck Boris Johnson", user_id: 1, location_id: 4)
+# Comment.create(content: "Speak English!", user_id: 1, location_id: 5)
+# Comment.create(content: "I have osteoperosis from eating so much steak", user_id: 1, location_id: 6)
+# Comment.create(content: "All these lights gave me a seizure", user_id: 1, location_id: 7)
+# Comment.create(content: "There are literally like a billion people in this country.", user_id: 1, location_id: 8)
+# Comment.create(content: "What's with all the old shit? Even I got catcalled here.", user_id: 1, location_id: 9)
+# Comment.create(content: "G'Day, ya weird snake lovers.", user_id: 1, location_id: 10)
 
-    Location.create(name: location_name, latitude_coordinate: latitude, longitude_coordinate: longitude, url_name: url_name)
-    end
+def createReviews
+
+  Attraction.all.each do |att|
+    url = `https://api.yelp.com/v3/businesses/#{att.yelp_id}/reviews`
+    params = {locale: "en_US"}
+    response = HTTP.auth("Bearer #{API_KEY}").get(url, params: params)
+    all_responses = response.parse
+
+    puts all_responses
+
   end
 end
 
-create_locations
-
-
-def attraction_search
-  all_responses = {}
-
-  LOCATION_COORDINATES.each do |loc|
-    loc.each do |l, coords|
-
-      url = "#{API_HOST}"
-      params = {term: "tourist_attractions", location: "#{l}", limit: 10}
-
-      response = HTTP.auth("Bearer #{API_KEY}").get(url, params: params)
-
-      all_responses[l] = response.parse
-    end
-  end
-  all_responses
-end
-
-def create_attractions
-  yelp_hash = attraction_search
-  yelp_hash.each do |loc, att|
-    att_location = Location.find_by(name: loc.to_s)
-
-    att["businesses"].each do |a, details|
-      att_name = a["name"]
-      att_image_url = a["image_url"]
-      att_yelp_url = a["url"]
-      att_average_rating = a["rating"]
-      att_latitude = a["coordinates"]["latitude"]
-      att_longitude = a["coordinates"]["longitude"]
-      att_address1 = a["location"]["address1"]
-      att_address2 = a["location"]["address2"]
-      att_city = a["location"]["city"]
-      att_state = a["location"]["state"]
-      att_zip_code = a["location"]["zip_code"]
-      att_country = a["location"]["country"]
-      att_display_address = a["location"]["display_address"]
-      url_name = att_name.split(" ").join("-")
-      yelp_id = a["id"]
-
-
-      Attraction.create(location_id: att_location.id, name: att_name, image_url: att_image_url, yelp_url: att_yelp_url, average_rating: att_average_rating, latitude_coordinate: att_latitude, longitude_coordinate: att_longitude, address1: att_address1, address2: att_address2, city: att_city, state: att_state, zip_code: att_zip_code, country: att_country, display_address: att_display_address, url_name: url_name, yelp_id: yelp_id)
-    end
-  end
-end
-
-create_attractions
-
-User.create(username: "ShadyReviewer", password_digest: "chipotle7", motto: "Not today, Satan!", bio: "Shady Reviewer")
-
-Comment.create(content: "Pizza rat. 'Nuff said.'", user_id: 1, location_id: 1)
-Comment.create(content: "I spent my whole vacation stuck in traffic", user_id: 1, location_id: 2)
-Comment.create(content: "Too many tech bros", user_id: 1, location_id: 3)
-Comment.create(content: "Beers cost $15. Fuck Boris Johnson", user_id: 1, location_id: 4)
-Comment.create(content: "Speak English!", user_id: 1, location_id: 5)
-Comment.create(content: "I have osteoperosis from eating so much steak", user_id: 1, location_id: 6)
-Comment.create(content: "All these lights gave me a seizure", user_id: 1, location_id: 7)
-Comment.create(content: "There are literally like a billion people in this country.", user_id: 1, location_id: 8)
-Comment.create(content: "What's with all the old shit? Even I got catcalled here.", user_id: 1, location_id: 9)
-Comment.create(content: "G'Day, ya weird snake lovers.", user_id: 1, location_id: 10)
+createReviews

@@ -85,14 +85,16 @@ class CommentContainer extends React.Component {
   };
 
   deleteComment = comment => {
+    console.log(this.state.comments);
     let updatedComments = this.state.comments.find(c => c.id !== comment.id);
     this.setState({
       comments: updatedComments
     });
-
-    fetch(`http://localhost:3000/api/v1/comments/${comment.id}`, {
-      method: "DELETE"
-    });
+    console.log(updatedComments);
+    //
+    // fetch(`http://localhost:3000/api/v1/comments/${comment.id}`, {
+    //   method: "DELETE"
+    // });
   };
 
   render() {
