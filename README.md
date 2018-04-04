@@ -1,5 +1,5 @@
 # Learn.Love.Travel.
-A travel planning app for exploring cities and attractions. Ruby on Rails back end, JavaScript/React front end with Google Map, Unsplash, and Yelp APIs, Bcrypt, and JSON Web Tokens. 
+A travel planning app for exploring cities and attractions. Ruby on Rails back end, JavaScript/React front end with Google Maps, Unsplash, and Yelp APIs, Bcrypt, and JSON Web Tokens. 
 
 ![front-page-screencap](learn-love-travel-splash.png)
 
