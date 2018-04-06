@@ -3,6 +3,12 @@ class UsersController < ApplicationController
 
   # skip_before_action :require_login, only: [:new, :create, :show]
 
+  # def user_friends
+  #   @user = sessions.user
+  #   @user_friends = @user.friends
+  #   # it would needs to iterate over that list and return the lat and long and then like maybe just their name
+  # end
+
   def login
     # byebug
     u = User.find_by(username: params[:username])
