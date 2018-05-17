@@ -13,7 +13,7 @@ A travel planning app for exploring cities and attractions. Ruby on Rails back e
 
 ## Prerequisites
 
-* Ruby v5.1.4
+* Rails v5.1.4
 * PostgreSQL 10
 * React
 
